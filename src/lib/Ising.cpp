@@ -1,7 +1,15 @@
-#include "lib/Ising.h"
+#include "Ising.h"
 
 Ising::Ising() {
   nodes[0] = 100;
+}
+
+Ising::~Ising() {
+  nodes[0] = 100;
+}
+
+void Ising::generateRandom() {
+  
 }
 
 double Ising::getEnergy() {
