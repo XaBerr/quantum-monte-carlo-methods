@@ -1,3 +1,3 @@
-#include "catch.hpp"
 #define CATCH_CONFIG_MAIN
-#include "lib/IsingTest.cpp"
+#include "catch.hpp"
+#include "lib/IsingTest.h"

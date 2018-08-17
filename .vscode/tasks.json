@@ -9,7 +9,10 @@
       "command": "g++",
       "args": [
         "-g",
-        "src/main.cpp"
+        "src/main.cpp",
+        "src/lib/Ising.cpp",
+        "-o",
+        "main.exe"
       ],
       "group": {
         "kind": "build",
@@ -22,7 +25,10 @@
       "command": "g++",
       "args": [
         "-g",
-        "test/test.cpp"
+        "test/test.cpp",
+        "src/lib/Ising.cpp",
+        "-o",
+        "test.exe"
       ],
       "group": {
         "kind": "test",
