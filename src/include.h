@@ -1,5 +1,7 @@
-#include <cstring>
-#include <iostream>
+#include <cstring>  /* strcmp */
+#include <iostream> /* coutm cin*/
+#include <stdio.h>  /* printf, scanf, puts, NULL */
+#include <cstdlib>  /* srand, rand */
 
 using namespace std;
 

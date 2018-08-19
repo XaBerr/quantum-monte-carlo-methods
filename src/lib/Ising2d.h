@@ -9,6 +9,10 @@ class Ising2d {
   void generate();
   void setNodeValue(int i, int j, int value);
   double getEnergy();
+  int getNodesLength();
+  int getArcsLength();
+  Node* getNode(int i, int j);
+  Arc2* getArc(int i);
 
  private:
   Node** nodes;

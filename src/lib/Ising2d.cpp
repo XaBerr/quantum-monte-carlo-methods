@@ -1,4 +1,5 @@
 #include "Ising2d.h"
+#include <cstdlib>
 
 Ising2d::Ising2d() {
   size = 3;
@@ -8,30 +9,48 @@ Ising2d::Ising2d() {
   arcsLength = 0;
   favorAlignment = true;
   favorSpinUp = true;
-  nodeMaxValue = 0;
-  nodeMinValue = 0;
-  arcMaxValue = 0;
-  arcMinValue = 0;
+  nodeMaxValue = 1;
+  nodeMinValue = -1;
+  arcMaxValue = 1;
+  arcMinValue = -1;
 }
 
 Ising2d::~Ising2d() {}
 
 void Ising2d::generate() {
+  int cont = 0;
   nodesLength = size;
-  nodes = new Node *[nodesLength];
-  for (int i = 0; i < nodesLength; ++i) {
-    nodes[i] = new Node[nodesLength];
-  }
   arcsLength = (size - 1) * (size - 1) * 2 + (size - 1) * 2;
   arcs = new Arc2[arcsLength];
+  nodes = new Node*[nodesLength];
+  for (int i = 0; i < nodesLength; i++) {
+    nodes[i] = new Node[nodesLength];
+    for (int j = 0; j < nodesLength; j++) {
+      nodes[i][j].setId((char*)(i + " " + j));
+      nodes[i][j].setValue(rand() * (nodeMaxValue - nodeMinValue) +
+                           nodeMinValue);
+      if (i > 0) {
+        arcs[cont].setNode1(&(nodes[i - 1][j]));
+        arcs[cont].setNode2(&(nodes[i][j]));
+        arcs[cont++].setValue(rand() * (arcMaxValue - arcMinValue) +
+                              arcMinValue);
+      }
+      if (j > 0) {
+        arcs[cont].setNode1(&(nodes[i][j - 1]));
+        arcs[cont].setNode2(&(nodes[i][j]));
+        arcs[cont++].setValue(rand() * (arcMaxValue - arcMinValue) +
+                              arcMinValue);
+      }
+    }
+  }
 }
 
 double Ising2d::getEnergy() {
   double energy = 0;
   int alpha = favorSpinUp ? -1 : 1;
   int beta = favorAlignment ? -1 : 1;
-  for (int i = 0; i < size; i++) {
-    for (int j = 0; j < size; j++) {
+  for (int i = 0; i < nodesLength; i++) {
+    for (int j = 0; j < nodesLength; j++) {
       energy += alpha * nodes[i][j].getValue() * nodes[i][j].getSpin();
     }
   }
@@ -41,3 +60,11 @@ double Ising2d::getEnergy() {
   }
   return energy;
 }
+
+int Ising2d::getNodesLength() { return nodesLength; }
+
+int Ising2d::getArcsLength() { return arcsLength; }
+
+Node* Ising2d::getNode(int i, int j) { return &nodes[i][j]; }
+
+Arc2* Ising2d::getArc(int i) { return &arcs[i]; }
