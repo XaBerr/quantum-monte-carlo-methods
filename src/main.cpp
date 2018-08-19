@@ -1,7 +1,6 @@
 #include "include.h"
 
 int main(int argc, char const *argv[]) {
-  Ising ising;
   cout << "Hello World!\n";
   printf("Hello world 2!\n");
   char *pippo;

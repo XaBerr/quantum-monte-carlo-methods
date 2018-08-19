@@ -2,4 +2,4 @@
 #include "catch.hpp"
 #include "lib/NodeTest.h"
 #include "lib/Arc2Test.h"
-#include "lib/IsingTest.h"
+#include "lib/Ising2dTest.h"

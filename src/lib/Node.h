@@ -3,15 +3,18 @@
 class Node {
  private:
   char* id;
-  int value;
+  int spin;
+  double value;
 
  public:
   Node();
-  Node(char* _id, int _value);
+  Node(char* _id, int _spin, double _value);
   ~Node();
   char* getId();
   void setId(char* _id);
-  int getValue();
-  void setValue(int _value);
+  int getSpin();
+  void setSpin(int _spin);
+  double getValue();
+  void setValue(double _value);
 };
 #endif
