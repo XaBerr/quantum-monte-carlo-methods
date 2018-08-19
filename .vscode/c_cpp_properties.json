@@ -3,8 +3,15 @@
         {
             "name": "Win32",
             "includePath": [
+                "c:/mingw/lib/gcc/mingw32/6.3.0/include/c++",
+                "c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/mingw32",
+                "c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/backward",
+                "c:/mingw/lib/gcc/mingw32/6.3.0/include",
+                "c:/mingw/include",
+                "c:/mingw/lib/gcc/mingw32/6.3.0/include-fixed",
+                "c:/mingw/mingw32/include",
                 "${workspaceFolder}/**",
-                "C:/MinGW/lib/gcc/mingw32/6.3.0/include/c++/**"
+                "${workspaceFolder}/src/lib/**"
             ],
             "defines": [
                 "_DEBUG",

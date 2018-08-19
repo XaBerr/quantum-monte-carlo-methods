@@ -10,7 +10,7 @@
       "args": [
         "-g",
         "src/main.cpp",
-        "src/lib/Ising.cpp",
+        "src/lib/*.cpp",
         "-o",
         "main.exe"
       ],
@@ -26,7 +26,7 @@
       "args": [
         "-g",
         "test/test.cpp",
-        "src/lib/Ising.cpp",
+        "src/lib/*.cpp",
         "-o",
         "test.exe"
       ],
