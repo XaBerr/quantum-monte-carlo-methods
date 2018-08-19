@@ -13,6 +13,10 @@ class Arc2 {
   ~Arc2();
   double getValue();
   void setValue(double _value);
+  Node* getNode1();
+  void setNode1(Node* _node);
+  Node* getNode2();
+  void setNode2(Node* _node);
 };
 
 #endif

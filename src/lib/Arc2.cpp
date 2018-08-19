@@ -17,3 +17,11 @@ Arc2::~Arc2() {}
 double Arc2::getValue() { return value; }
 
 void Arc2::setValue(double _value) { value = _value; }
+
+Node* Arc2::getNode1() { return node1; }
+
+void Arc2::setNode1(Node* _node) { node1 = _node; }
+
+Node* Arc2::getNode2() { return node2; }
+
+void Arc2::setNode2(Node* _node) { node2 = _node; }
