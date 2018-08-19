@@ -5,14 +5,9 @@
   "tasks": [
     {
       "label": "build",
-      "type": "shell",
-      "command": "g++",
-      "args": [
-        "-g",
-        "src/main.cpp",
-        "src/lib/*.cpp",
-        "-o",
-        "main.exe"
+      "dependsOn": [
+        "build-build",
+        "build-run"
       ],
       "group": {
         "kind": "build",
@@ -20,20 +15,35 @@
       }
     },
     {
-      "label": "test",
+      "label": "build-build",
       "type": "shell",
-      "command": "g++",
-      "args": [
-        "-g",
-        "test/test.cpp",
-        "src/lib/*.cpp",
-        "-o",
-        "test.exe"
+      "command": "g++ -g src/main.cpp src/lib/*.cpp -o main.exe"
+    },
+    {
+      "label": "build-run",
+      "type": "shell",
+      "command": "./main.exe"
+    },
+    {
+      "label": "test",
+      "dependsOn": [
+        "test-build",
+        "test-run"
       ],
       "group": {
         "kind": "test",
         "isDefault": true
       }
+    },
+    {
+      "label": "test-build",
+      "type": "shell",
+      "command": "g++ -g test/test.cpp src/lib/*.cpp -o test.exe"
+    },
+    {
+      "label": "test-run",
+      "type": "shell",
+      "command": "./test.exe"
     }
   ]
 }

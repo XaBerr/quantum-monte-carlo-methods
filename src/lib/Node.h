@@ -9,5 +9,9 @@ class Node {
   Node();
   Node(char* _id, int _value);
   ~Node();
+  char* getId();
+  void setId(char* _id);
+  int getValue();
+  void setValue(int _value);
 };
 #endif

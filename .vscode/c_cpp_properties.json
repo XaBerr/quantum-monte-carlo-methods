@@ -11,6 +11,7 @@
                 "c:/mingw/lib/gcc/mingw32/6.3.0/include-fixed",
                 "c:/mingw/mingw32/include",
                 "${workspaceFolder}/**",
+                "${workspaceFolder}/test/**",
                 "${workspaceFolder}/src/lib/**"
             ],
             "defines": [
