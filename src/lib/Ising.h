@@ -1,4 +1,4 @@
-#include "Arc.h"
+#include "Arc2.h"
 
 #ifndef Ising_h
 #define Ising_h

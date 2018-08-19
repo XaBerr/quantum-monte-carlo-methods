@@ -5,9 +5,10 @@
   "tasks": [
     {
       "label": "build",
+      "type": "shell",
+      "command": "./main.exe",
       "dependsOn": [
-        "build-build",
-        "build-run"
+        "build-build"
       ],
       "group": {
         "kind": "build",
@@ -26,9 +27,10 @@
     },
     {
       "label": "test",
+      "type": "shell",
+      "command": "./test.exe",
       "dependsOn": [
-        "test-build",
-        "test-run"
+        "test-build"
       ],
       "group": {
         "kind": "test",

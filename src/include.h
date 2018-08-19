@@ -1,6 +1,8 @@
 #include <cstring>
 #include <iostream>
-#include "lib/Node.h"
-#include "lib/Arc.h"
-#include "lib/Ising.h"
+
 using namespace std;
+
+#include "lib/Node.h"
+#include "lib/Arc2.h"
+#include "lib/Ising.h"
