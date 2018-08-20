@@ -44,9 +44,11 @@ TEST_CASE("Ising2d getDelta()", "[ising1,ising2]") {
   (ising1.getNode(0, 0))->setValue(1);
   (ising2.getNode(0, 0))->setSpin(1);
   (ising2.getNode(0, 0))->setValue(1);
-  REQUIRE(ising1.getDelta(ising2) == 0);
-  REQUIRE(ising2.getDelta(ising1) == 0);
+  REQUIRE(ising1.getEnergy() == -1);
+  REQUIRE(ising2.getEnergy() == -1);
+  REQUIRE(ising1.getDelta(&ising2) == 0);
+  REQUIRE(ising2.getDelta(&ising1) == 0);
   (ising1.getNode(0, 0))->setValue(2);
-  REQUIRE(ising1.getDelta(ising2) == -1);
-  REQUIRE(ising2.getDelta(ising1) == 1);
+  REQUIRE(ising1.getDelta(&ising2) == -1);
+  REQUIRE(ising2.getDelta(&ising1) == 1);
 }

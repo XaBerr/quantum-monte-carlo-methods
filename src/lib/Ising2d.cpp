@@ -15,6 +15,26 @@ Ising2d::Ising2d() {
   arcMinValue = -1;
 }
 
+Ising2d::Ising2d(Ising2d& ising) {
+  size = ising.getSize();
+  favorAlignment = ising.getFavorAlignment();
+  favorSpinUp = ising.getFavorSpinUp();
+  nodeMaxValue = ising.getNodeMaxValue();
+  nodeMinValue = ising.getNodeMinValue();
+  arcMaxValue = ising.getArcMaxValue();
+  arcMinValue = ising.getArcMinValue();
+  generate();
+  for (int i = 0; i < nodesLength; i++) {
+    for (int j = 0; j < nodesLength; j++) {
+      nodes[i][j].setValue((ising.getNode(i, j))->getValue());
+      nodes[i][j].setSpin((ising.getNode(i, j))->getSpin());
+    }
+  }
+  for (int i = 0; i < arcsLength; i++) {
+    arcs[i].setValue((ising.getArc(i)->getValue()));
+  }
+}
+
 Ising2d::~Ising2d() {}
 
 void Ising2d::generate() {
@@ -69,9 +89,45 @@ Node* Ising2d::getNode(int i, int j) { return &nodes[i][j]; }
 
 Arc2* Ising2d::getArc(int i) { return &arcs[i]; }
 
-double Ising2d::getDelta(Ising2d ising) {
-  return (getEnergy() > ising.getEnergy() ? 1 : -1) *
-         abs(getEnergy() - ising.getEnergy());
+double Ising2d::getDelta(Ising2d* ising) {
+  return (getEnergy() > ising->getEnergy() ? 1 : -1) *
+         abs(getEnergy() - ising->getEnergy());
 }
 
 void Ising2d::setSize(int _size) { size = _size; }
+
+int Ising2d::getSize() { return size; }
+
+void Ising2d::setFavorAlignment(bool _favorAlignment) {
+  favorAlignment = _favorAlignment;
+}
+
+bool Ising2d::getFavorAlignment() { return favorAlignment; }
+
+void Ising2d::setFavorSpinUp(bool _favorSpinUp) { favorSpinUp = _favorSpinUp; }
+
+bool Ising2d::getFavorSpinUp() { return favorSpinUp; }
+
+void Ising2d::setNodeMaxValue(double _nodeMaxValue) {
+  nodeMaxValue = _nodeMaxValue;
+}
+
+double Ising2d::getNodeMaxValue() { return nodeMaxValue; }
+
+void Ising2d::setNodeMinValue(double _nodeMinValue) {
+  nodeMinValue = _nodeMinValue;
+}
+
+double Ising2d::getNodeMinValue() { return nodeMinValue; }
+
+void Ising2d::setArcMaxValue(double _arcMaxValue) {
+  arcMaxValue = _arcMaxValue;
+}
+
+double Ising2d::getArcMaxValue() { return arcMaxValue; }
+
+void Ising2d::setArcMinValue(double _arcMinValue) {
+  arcMinValue = _arcMinValue;
+}
+
+double Ising2d::getArcMinValue() { return arcMinValue; }
