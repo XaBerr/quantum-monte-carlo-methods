@@ -12,15 +12,3 @@ Node::Node(char* _id, int _spin, double _value) {
 }
 
 Node::~Node() {}
-
-char* Node::getId() { return id; }
-
-void Node::setId(char* _id) { id = _id; }
-
-double Node::getValue() { return value; }
-
-void Node::setValue(double _value) { value = _value; }
-
-int Node::getSpin() { return spin; }
-
-void Node::setSpin(int _spin) { spin = _spin; }
