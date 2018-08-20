@@ -12,7 +12,10 @@
                 "c:/mingw/mingw32/include",
                 "${workspaceFolder}/**",
                 "${workspaceFolder}/test/**",
-                "${workspaceFolder}/src/lib/**"
+                "${workspaceFolder}/src/models/**",
+                "${workspaceFolder}/src/algorithms/**",
+                "${workspaceFolder}/test/models/**",
+                "${workspaceFolder}/test/algorithms/**"
             ],
             "defines": [
                 "_DEBUG",

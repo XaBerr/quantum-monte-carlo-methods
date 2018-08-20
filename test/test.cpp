@@ -1,5 +1,5 @@
 #define CATCH_CONFIG_MAIN
 #include "catch.hpp"
-#include "lib/NodeTest.h"
-#include "lib/Arc2Test.h"
-#include "lib/Ising2dTest.h"
+#include "models/NodeTest.h"
+#include "models/Arc2Test.h"
+#include "models/Ising2dTest.h"

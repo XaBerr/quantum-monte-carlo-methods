@@ -18,7 +18,7 @@
     {
       "label": "build-build",
       "type": "shell",
-      "command": "g++ -g src/main.cpp src/lib/*.cpp -o main.exe"
+      "command": "g++ -g src/main.cpp src/models/*.cpp src/algorithms/*.cpp -o main.exe"
     },
     {
       "label": "build-run",
@@ -40,7 +40,7 @@
     {
       "label": "test-build",
       "type": "shell",
-      "command": "g++ -g test/test.cpp src/lib/*.cpp -o test.exe"
+      "command": "g++ -g test/test.cpp src/models/*.cpp src/algorithms/*.cpp -o test.exe"
     },
     {
       "label": "test-run",
