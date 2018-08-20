@@ -68,3 +68,10 @@ int Ising2d::getArcsLength() { return arcsLength; }
 Node* Ising2d::getNode(int i, int j) { return &nodes[i][j]; }
 
 Arc2* Ising2d::getArc(int i) { return &arcs[i]; }
+
+double Ising2d::getDelta(Ising2d ising) {
+  return (getEnergy() > ising.getEnergy() ? 1 : -1) *
+         abs(getEnergy() - ising.getEnergy());
+}
+
+void Ising2d::setSize(int _size) { size = _size; }

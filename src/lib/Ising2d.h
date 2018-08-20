@@ -13,6 +13,8 @@ class Ising2d {
   int getArcsLength();
   Node* getNode(int i, int j);
   Arc2* getArc(int i);
+  double getDelta(Ising2d ising);
+  void setSize(int _size);
 
  private:
   Node** nodes;
