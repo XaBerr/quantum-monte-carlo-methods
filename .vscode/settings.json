@@ -1,6 +1,5 @@
 {
   "C_Cpp.clang_format_fallbackStyle": "{ BasedOnStyle: Google, IndentWidth: 2 }",
-  "C_Cpp.errorSquiggles": "Disabled",
   "files.associations": {
     "array": "cpp",
     "bitset": "cpp",

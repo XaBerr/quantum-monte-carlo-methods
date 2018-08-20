@@ -3,4 +3,4 @@
 #include "models/NodeTest.h"
 #include "models/Arc2Test.h"
 #include "models/Ising2dTest.h"
-#include "algorithms/SimulatedAnnealing.h"
+#include "algorithms/SimulatedAnnealingTest.h"
