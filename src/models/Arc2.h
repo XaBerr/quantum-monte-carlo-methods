@@ -1,4 +1,5 @@
 #include "Node.h"
+
 #ifndef Arc2_h
 #define Arc2_h
 class Arc2 {

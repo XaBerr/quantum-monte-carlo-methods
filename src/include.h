@@ -8,3 +8,4 @@ using namespace std;
 #include "models/Node.h"
 #include "models/Arc2.h"
 #include "models/Ising2d.h"
+#include "algorithms/SimulatedAnnealing.h"
