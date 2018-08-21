@@ -10,27 +10,14 @@
                 "c:/mingw/include",
                 "c:/mingw/lib/gcc/mingw32/6.3.0/include-fixed",
                 "c:/mingw/mingw32/include",
-                "${workspaceFolder}/**",
-                "${workspaceFolder}/test/**",
-                "${workspaceFolder}/src/models/**",
-                "${workspaceFolder}/src/algorithms/**",
-                "${workspaceFolder}/test/models/**",
-                "${workspaceFolder}/test/algorithms/**"
+                "${workspaceFolder}/**"
             ],
             "defines": [
                 "_DEBUG",
                 "UNICODE"
             ],
             "compilerPath": "C:/MinGW/bin/gcc.exe",
-            "intelliSenseMode": "clang-x64",
-            "browse": {
-                "path": [
-                    "C:/MinGW/lib/gcc/mingw32/6.3.0/include/c++/**",
-                    "${workspaceFolder}/**"
-                ],
-                "limitSymbolsToIncludedHeaders": true,
-                "databaseFilename": ""
-            }
+            "intelliSenseMode": "clang-x64"
         }
     ],
     "version": 4

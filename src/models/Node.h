@@ -5,6 +5,7 @@ class Node {
   Node();
   Node(char* _id, int _spin, double _value);
   ~Node();
+  void flip();
 
   char* id;
   int spin;

@@ -6,9 +6,11 @@ class SimulatedAnnealing {
  public:
   SimulatedAnnealing();
   ~SimulatedAnnealing();
+  Ising2d generateNeighboringConfig(Ising2d _ising);
+  void run();
 
-  Ising2d ising;
   Ising2d startingConfig;
+  Ising2d endingConfig;
   double startingTemperature;
   double deltaTemeprature;
   double endingTemeprature;

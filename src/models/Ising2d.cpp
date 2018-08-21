@@ -1,5 +1,6 @@
 #include "Ising2d.h"
 #include <cstdlib>
+#include "../lib/functions.h"
 
 Ising2d::Ising2d() {
   size = 3;
@@ -47,16 +48,19 @@ void Ising2d::generate() {
     nodes[i] = new Node[nodesLength];
     for (int j = 0; j < nodesLength; j++) {
       nodes[i][j].id = (char*)(i + " " + j);
-      nodes[i][j].value = rand() * (nodeMaxValue - nodeMinValue) + nodeMinValue;
+      nodes[i][j].value =
+          uniform() * (nodeMaxValue - nodeMinValue) + nodeMinValue;
       if (i > 0) {
         arcs[cont].node1 = &(nodes[i - 1][j]);
         arcs[cont].node2 = &(nodes[i][j]);
-        arcs[cont++].value = rand() * (arcMaxValue - arcMinValue) + arcMinValue;
+        arcs[cont++].value =
+            uniform() * (arcMaxValue - arcMinValue) + arcMinValue;
       }
       if (j > 0) {
         arcs[cont].node1 = &(nodes[i][j - 1]);
         arcs[cont].node2 = &(nodes[i][j]);
-        arcs[cont++].value = rand() * (arcMaxValue - arcMinValue) + arcMinValue;
+        arcs[cont++].value =
+            uniform() * (arcMaxValue - arcMinValue) + arcMinValue;
       }
     }
   }

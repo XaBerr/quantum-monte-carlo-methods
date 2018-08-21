@@ -12,3 +12,5 @@ Node::Node(char* _id, int _spin, double _value) {
 }
 
 Node::~Node() {}
+
+void Node::flip() { spin *= -1; }

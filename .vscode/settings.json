@@ -7,5 +7,6 @@
     "utility": "cpp",
     "cstdlib": "cpp",
     "*.tcc": "cpp"
-  }
+  },
+  "C_Cpp.loggingLevel": "Debug"
 }
