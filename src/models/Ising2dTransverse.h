@@ -12,15 +12,8 @@ class Ising2dTransverse {
   double getEnergy();
   double getDelta(Ising2dTransverse* ising);
   Ising2d* slices;
-  int nodesLength;
-  int arcsLength;
+  Ising2d mainReplica;
   int slicesLength;
-  int size;
-  bool favorAlignment;
-  bool favorSpinUp;
-  double nodeMaxValue;
-  double nodeMinValue;
-  double arcMaxValue;
-  double arcMinValue;
+  double tranverseField;
 };
 #endif

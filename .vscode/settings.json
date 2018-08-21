@@ -6,7 +6,8 @@
     "initializer_list": "cpp",
     "utility": "cpp",
     "cstdlib": "cpp",
-    "*.tcc": "cpp"
+    "*.tcc": "cpp",
+    "chrono": "cpp"
   },
   "C_Cpp.loggingLevel": "Debug",
   "C_Cpp.errorSquiggles": "Disabled"

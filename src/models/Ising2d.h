@@ -8,7 +8,6 @@ class Ising2d {
   Ising2d(Ising2d& ising);
   ~Ising2d();
   void generate();
-  void setNodeValue(int i, int j, int value);
   double getEnergy();
   double getDelta(Ising2d* ising);
   Node** nodes;
