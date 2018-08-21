@@ -10,3 +10,4 @@ using namespace std;
 #include "models/Arc2.h"
 #include "models/Ising2d.h"
 #include "algorithms/SimulatedAnnealing.h"
+#include "models/Ising2dTransverse.h"

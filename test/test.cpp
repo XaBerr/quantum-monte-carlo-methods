@@ -4,3 +4,4 @@
 #include "models/Arc2Test.h"
 #include "models/Ising2dTest.h"
 #include "algorithms/SimulatedAnnealingTest.h"
+#include "models/Ising2dTransverseTest.h"
