@@ -7,7 +7,7 @@ SimulatedAnnealing::SimulatedAnnealing() {
   startingTemperature = 100.0;
   deltaTemeprature = 1.0;
   endingTemeprature = 0.0;
-  scale = 1.0;
+  scale = 10;
 }
 
 SimulatedAnnealing::~SimulatedAnnealing() {}
@@ -21,22 +21,17 @@ Ising2d SimulatedAnnealing::generateNeighboringConfig(Ising2d _ising) {
 }
 
 void SimulatedAnnealing::run() {
-  Ising2d currentConfig = startingConfig;
+  Ising2d trialConfig;
   Ising2d bestConfig = startingConfig;
-  int steps =
-      (int)(abs(startingTemperature - endingTemeprature) / deltaTemeprature);
-  printf("Steps [%d]\n", steps);
-  for (int i = 0; i < steps; i++) {
-    currentConfig = generateNeighboringConfig(bestConfig);
-    double t1 = endingTemeprature - steps * deltaTemeprature;
-    double t2 = currentConfig.getDelta(&bestConfig);
-    printf("Energia corrente [%f] energia di prova [%f]\n",
-           bestConfig.getEnergy(), currentConfig.getEnergy());
-    if (t1 < 0 || uniform() < exp(-scale * t1 / t2)) {
-      printf("si\n");
-      bestConfig = currentConfig;
-    } else
-      printf("no\n");
+  double delta;
+  for (double currentTemperature = startingTemperature;
+       currentTemperature > endingTemeprature;
+       currentTemperature -= deltaTemeprature) {
+    trialConfig = generateNeighboringConfig(bestConfig);
+    delta = trialConfig.getDelta(&bestConfig);
+    if (uniform() < exp(-scale * delta / currentTemperature)) {
+      bestConfig = trialConfig;
+    }
   }
   endingConfig = bestConfig;
 }

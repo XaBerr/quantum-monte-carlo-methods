@@ -8,5 +8,6 @@
     "cstdlib": "cpp",
     "*.tcc": "cpp"
   },
-  "C_Cpp.loggingLevel": "Debug"
+  "C_Cpp.loggingLevel": "Debug",
+  "C_Cpp.errorSquiggles": "Disabled"
 }
