@@ -5,8 +5,8 @@
 
 SimulatedAnnealing::SimulatedAnnealing() {
   startingTemperature = 100.0;
-  deltaTemeprature = 1.0;
-  endingTemeprature = 0.0;
+  deltaTemperature = 1.0;
+  endingTemperature = 0.0;
   scale = 10;
 }
 
@@ -25,8 +25,8 @@ void SimulatedAnnealing::run() {
   Ising2d bestConfig = startingConfig;
   double delta;
   for (double currentTemperature = startingTemperature;
-       currentTemperature > endingTemeprature;
-       currentTemperature -= deltaTemeprature) {
+       currentTemperature > endingTemperature;
+       currentTemperature -= deltaTemperature) {
     trialConfig = generateNeighboringConfig(bestConfig);
     delta = trialConfig.getDelta(&bestConfig);
     if (uniform() < exp(-scale * delta / currentTemperature)) {

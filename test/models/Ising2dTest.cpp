@@ -6,16 +6,6 @@ TEST_CASE("Ising2d Ising2d()", "[ising]") {
   REQUIRE(ising.nodes == 0);
 }
 
-TEST_CASE("Ising2d getEnergy()", "[ising]") {
-  Ising2d ising;
-  REQUIRE(ising.getEnergy() == 0);
-  ising.generate();
-  double energy = ising.getEnergy();
-  ising.periodicBoundary = true;
-  ising.generate();
-  REQUIRE(ising.getEnergy() != energy);
-}
-
 TEST_CASE("Ising2d generate()", "[ising]") {
   Ising2d ising;
   ising.generate();
@@ -36,6 +26,16 @@ TEST_CASE("Ising2d generate()", "[ising]") {
   ising.generate();
   REQUIRE(ising.arcsLength == 4);
   REQUIRE(ising.nodesLength == 2);
+}
+
+TEST_CASE("Ising2d getEnergy()", "[ising]") {
+  Ising2d ising;
+  REQUIRE(ising.getEnergy() == 0);
+  ising.generate();
+  double energy = ising.getEnergy();
+  ising.periodicBoundary = true;
+  ising.generate();
+  REQUIRE(ising.getEnergy() != energy);
 }
 
 TEST_CASE("Ising2d Ising2d(Ising2d& ising)", "[ising]") {

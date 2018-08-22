@@ -12,8 +12,8 @@ class SimulatedAnnealing {
   Ising2d startingConfig;
   Ising2d endingConfig;
   double startingTemperature;
-  double deltaTemeprature;
-  double endingTemeprature;
+  double deltaTemperature;
+  double endingTemperature;
   double scale;
 };
 #endif
