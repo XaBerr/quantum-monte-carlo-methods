@@ -18,12 +18,15 @@
     {
       "label": "build-build",
       "type": "shell",
-      "command": "g++ -g src/main.cpp src/lib/*.cpp src/models/*.cpp src/algorithms/*.cpp -o main.exe"
+      "command": "g++ -g src/main.cpp src/lib/*.cpp src/models/*.cpp src/algorithms/*.cpp -o main.exe",
+      "dependsOn": [
+        "build-clear"
+      ]
     },
     {
-      "label": "build-run",
+      "label": "build-clear",
       "type": "shell",
-      "command": "./main.exe"
+      "command": "rm main.exe"
     },
     {
       "label": "test",
@@ -40,12 +43,15 @@
     {
       "label": "test-build",
       "type": "shell",
-      "command": "g++ -g test/test.cpp src/lib/*.cpp src/models/*.cpp src/algorithms/*.cpp -o test.exe"
+      "command": "g++ -g test/test.cpp src/lib/*.cpp src/models/*.cpp src/algorithms/*.cpp -o test.exe",
+      "dependsOn": [
+        "test-clear"
+      ]
     },
     {
-      "label": "test-run",
+      "label": "test-clear",
       "type": "shell",
-      "command": "./test.exe"
+      "command": "rm test.exe"
     }
   ]
 }
