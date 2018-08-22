@@ -3,7 +3,17 @@
 
 TEST_CASE("Ising2d Ising2d()", "[ising]") {
   Ising2d ising;
+  REQUIRE(ising.nodes == 0);
+}
+
+TEST_CASE("Ising2d getEnergy()", "[ising]") {
+  Ising2d ising;
   REQUIRE(ising.getEnergy() == 0);
+  ising.generate();
+  double energy = ising.getEnergy();
+  ising.periodicBoundary = true;
+  ising.generate();
+  REQUIRE(ising.getEnergy() != energy);
 }
 
 TEST_CASE("Ising2d generate()", "[ising]") {

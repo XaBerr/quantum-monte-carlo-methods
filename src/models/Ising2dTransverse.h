@@ -13,8 +13,11 @@ class Ising2dTransverse {
   double getDelta(Ising2dTransverse* ising);
   Ising2d* slices;
   Ising2d mainReplica;
-  int slicesLength;
+  int numberOfReplica;
   double tranverseField;
   double periodicBoundary;
+
+ private:
+  int slicesLength;
 };
 #endif

@@ -3,14 +3,16 @@
 
 Ising2dTransverse::Ising2dTransverse() {
   slices = 0;
+  numberOfReplica = 3;
   tranverseField = 0;
-  slicesLength = 1;
+  slicesLength = 0;
   periodicBoundary = false;
 }
 
 Ising2dTransverse::~Ising2dTransverse() {}
 
 void Ising2dTransverse::generate() {
+  slicesLength = numberOfReplica;
   slices = new Ising2d[slicesLength];
   for (int i = 0; i < slicesLength; i++) {
     slices[i] = mainReplica;
