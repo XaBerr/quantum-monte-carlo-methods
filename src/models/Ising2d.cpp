@@ -10,6 +10,7 @@ Ising2d::Ising2d() {
   arcsLength = 0;
   favorAlignment = true;
   favorSpinUp = true;
+  periodicBoundary = false;
   nodeMaxValue = 1;
   nodeMinValue = -1;
   arcMaxValue = 1;
@@ -24,6 +25,7 @@ Ising2d::Ising2d(Ising2d& ising) {
   nodeMinValue = ising.nodeMinValue;
   arcMaxValue = ising.arcMaxValue;
   arcMinValue = ising.arcMinValue;
+  periodicBoundary = ising.periodicBoundary;
   generate();
   for (int i = 0; i < nodesLength; i++) {
     for (int j = 0; j < nodesLength; j++) {
@@ -56,9 +58,21 @@ void Ising2d::generate() {
         arcs[cont++].value =
             uniform() * (arcMaxValue - arcMinValue) + arcMinValue;
       }
+      if (periodicBoundary && (i == nodesLength - 1)) {
+        arcs[cont].node1 = &(nodes[i][j]);
+        arcs[cont].node2 = &(nodes[0][j]);
+        arcs[cont++].value =
+            uniform() * (arcMaxValue - arcMinValue) + arcMinValue;
+      }
       if (j > 0) {
         arcs[cont].node1 = &(nodes[i][j - 1]);
         arcs[cont].node2 = &(nodes[i][j]);
+        arcs[cont++].value =
+            uniform() * (arcMaxValue - arcMinValue) + arcMinValue;
+      }
+      if (periodicBoundary && (j == nodesLength - 1)) {
+        arcs[cont].node1 = &(nodes[i][j]);
+        arcs[cont].node2 = &(nodes[i][0]);
         arcs[cont++].value =
             uniform() * (arcMaxValue - arcMinValue) + arcMinValue;
       }

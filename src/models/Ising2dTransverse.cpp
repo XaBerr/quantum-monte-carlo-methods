@@ -5,6 +5,7 @@ Ising2dTransverse::Ising2dTransverse() {
   slices = 0;
   tranverseField = 0;
   slicesLength = 1;
+  periodicBoundary = false;
 }
 
 Ising2dTransverse::~Ising2dTransverse() {}
@@ -21,9 +22,11 @@ double Ising2dTransverse::getEnergy() {
   for (int i = 0; i < slicesLength; i++) {
     energy += slices[i].getEnergy();
     for (int j = 0; j < slices[i].nodesLength; j++) {
-      for (int k = 0; k < slices[i].nodesLength - 1; k++) {
-        energy += -tranverseField * slices[i].nodes[j][j].spin *
-                  slices[i].nodes[j][j].spin;
+      for (int k = 0; k < slices[i].nodesLength; k++) {
+        if (periodicBoundary || ((i + 1) % slicesLength)) {
+          energy += -tranverseField * slices[i].nodes[j][k].spin *
+                    slices[(i + 1) % slicesLength].nodes[j][k].spin;
+        }
       }
     }
   }

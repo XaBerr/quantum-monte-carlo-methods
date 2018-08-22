@@ -17,6 +17,7 @@ class Ising2d {
   int size;
   bool favorAlignment;
   bool favorSpinUp;
+  bool periodicBoundary;
   double nodeMaxValue;
   double nodeMinValue;
   double arcMaxValue;

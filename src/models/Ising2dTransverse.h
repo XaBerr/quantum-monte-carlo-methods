@@ -15,5 +15,6 @@ class Ising2dTransverse {
   Ising2d mainReplica;
   int slicesLength;
   double tranverseField;
+  double periodicBoundary;
 };
 #endif
