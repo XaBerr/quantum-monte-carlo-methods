@@ -4,9 +4,19 @@
 Ising2dTransverse::Ising2dTransverse() {
   slices = 0;
   numberOfReplica = 3;
-  tranverseField = 0;
+  tranverseField = 1;
   slicesLength = 0;
   periodicBoundary = false;
+}
+
+Ising2dTransverse::Ising2dTransverse(Ising2dTransverse& ising) {
+  slices = ising.slices;
+  numberOfReplica = ising.numberOfReplica;
+  tranverseField = ising.tranverseField;
+  slicesLength = ising.slicesLength;
+  periodicBoundary = ising.periodicBoundary;
+  mainReplica = ising.mainReplica;
+  generate();
 }
 
 Ising2dTransverse::~Ising2dTransverse() {}
