@@ -38,6 +38,17 @@ TEST_CASE("Ising2d generate()", "[ising]") {
   REQUIRE(ising.nodesLength == 2);
 }
 
+TEST_CASE("Ising2d Ising2d(Ising2d& ising)", "[ising]") {
+  Ising2d ising1, ising2;
+  ising1.size = 2;
+  ising1.periodicBoundary = true;
+  ising1.generate();
+  ising2 = ising1;
+  REQUIRE(ising2.size == ising1.size);
+  REQUIRE(ising2.periodicBoundary == ising1.periodicBoundary);
+  REQUIRE(ising2.getEnergy() == ising1.getEnergy());
+}
+
 TEST_CASE("Ising2d getDelta()", "[ising1,ising2]") {
   Ising2d ising1, ising2;
   ising1.size = 1;
