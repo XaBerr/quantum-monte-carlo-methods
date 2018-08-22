@@ -11,3 +11,4 @@ using namespace std;
 #include "models/Ising2d.h"
 #include "algorithms/SimulatedAnnealing.h"
 #include "models/Ising2dTransverse.h"
+#include "algorithms/SantoroTosattiMartonak.h"

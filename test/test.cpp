@@ -1,7 +1,8 @@
 #define CATCH_CONFIG_MAIN
 #include "catch.hpp"
-#include "models/NodeTest.h"
-#include "models/Arc2Test.h"
-#include "models/Ising2dTest.h"
-#include "algorithms/SimulatedAnnealingTest.h"
-#include "models/Ising2dTransverseTest.h"
+#include "models/NodeTest.cpp"
+#include "models/Arc2Test.cpp"
+#include "models/Ising2dTest.cpp"
+#include "algorithms/SimulatedAnnealingTest.cpp"
+#include "models/Ising2dTransverseTest.cpp"
+#include "algorithms/SantoroTosattiMartonakTest.cpp"

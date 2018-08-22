@@ -8,7 +8,6 @@ class Ising2dTransverse {
   Ising2dTransverse(Ising2dTransverse& ising);
   ~Ising2dTransverse();
   void generate();
-  void setNodeValue(int i, int j, int value);
   double getEnergy();
   double getDelta(Ising2dTransverse* ising);
   Ising2d* slices;
