@@ -33,5 +33,5 @@ TEST_CASE("SimulatedAnnealing run()", "[sa]") {
     sa.run();
     if (min > sa.endingConfig.getEnergy()) min = sa.endingConfig.getEnergy();
   }
-  REQUIRE(sa.startingConfig.getEnergy() >= min);
+  REQUIRE(sa.startingConfig.getEnergy() > min);
 }

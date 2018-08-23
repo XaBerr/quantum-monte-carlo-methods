@@ -17,24 +17,29 @@ TEST_CASE("SantoroTosattiMartonak generateNeighboringConfig()", "[stm]") {
 }
 
 TEST_CASE("SantoroTosattiMartonak run()", "[stm]") {
-  // SantoroTosattiMartonak stm;
-  // double min = 999;
-  // stm.startingConfig.size = 3;
-  // stm.startingConfig.generate();
-  // for (int i = 0; i < stm.startingConfig.nodesLength; i++) {
-  //   for (int j = 0; j < stm.startingConfig.nodesLength; j++) {
-  //     stm.startingConfig.nodes[i][j].value = 1;
-  //     stm.startingConfig.nodes[i][j].spin = (uniform() < 0.5) ? 1 : -1;
-  //   }
-  // }
-  // for (int i = 0; i < stm.startingConfig.arcsLength; i++) {
-  //   stm.startingConfig.arcs[i].value = 1;
-  // }
+  SantoroTosattiMartonak stm;
+  double min = 999;
+  stm.startingConfig.numberOfReplica = 3;
+  stm.startingConfig.mainReplica.size = 3;
+  stm.startingConfig.mainReplica.generate();
 
-  // for (int i = 0; i < 5; i++) {
-  //   stm.run();
-  //   if (min > stm.endingConfig.getEnergy()) min =
-  //   stm.endingConfig.getEnergy();
-  // }
-  // REQUIRE(stm.startingConfig.getEnergy() >= min);
+  for (int i = 0; i < stm.startingConfig.mainReplica.nodesLength; i++) {
+    for (int j = 0; j < stm.startingConfig.mainReplica.nodesLength; j++) {
+      stm.startingConfig.mainReplica.nodes[i][j].value = 1;
+      stm.startingConfig.mainReplica.nodes[i][j].spin =
+          (uniform() < 0.5) ? 1 : -1;
+    }
+  }
+  for (int i = 0; i < stm.startingConfig.mainReplica.arcsLength; i++) {
+    stm.startingConfig.mainReplica.arcs[i].value = 1;
+  }
+  stm.startingConfig.generate();
+
+  for (int i = 0; i < 5; i++) {
+    stm.run();
+    if (min > stm.endingConfig.getEnergy()) {
+      min = stm.endingConfig.getEnergy();
+    }
+  }
+  REQUIRE(stm.startingConfig.getEnergy() > min);
 }
