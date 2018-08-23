@@ -49,6 +49,14 @@
       ]
     },
     {
+      "label": "test-debug",
+      "type": "shell",
+      "command": "g++ -g test/test.cpp src/lib/*.cpp src/models/*.cpp src/algorithms/*.cpp -o test.exe",
+      "dependsOn": [
+        "test-clear"
+      ]
+    },
+    {
       "label": "test-build",
       "type": "shell",
       "command": "g++ -O0 test/test.cpp src/lib/*.cpp src/models/*.cpp src/algorithms/*.cpp -o test.exe",

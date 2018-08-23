@@ -22,7 +22,11 @@ Ising2dTransverse& Ising2dTransverse::operator=(
     slicesLength = ising.slicesLength;
     periodicBoundary = ising.periodicBoundary;
     mainReplica = ising.mainReplica;
-    generate();
+    slicesLength = numberOfReplica;
+    slices = new Ising2d[slicesLength];
+    for (int i = 0; i < slicesLength; i++) {
+      slices[i] = ising.slices[i];
+    }
   }
   return *this;
 }

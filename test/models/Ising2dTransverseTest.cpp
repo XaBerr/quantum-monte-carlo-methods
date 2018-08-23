@@ -42,22 +42,34 @@ TEST_CASE("Ising2dTransverse  ising1 = ising2", "[ising]") {
   REQUIRE(ising2.getEnergy() == ising1.getEnergy());
   ising1.slices[0].nodes[0][0].flip();
   REQUIRE(ising2.getEnergy() != ising1.getEnergy());
+  ising1.generate();
+  ising1.mainReplica.nodes[0][0].spin = 1;
+  ising1.mainReplica.nodes[0][0].value = 1;
+  ising2 = ising1;
+  REQUIRE(ising2.getEnergy() == ising1.getEnergy());
 }
 
 TEST_CASE("Ising2dTransverse getDelta()", "[ising1,ising2]") {
   Ising2dTransverse ising1, ising2;
   ising1.mainReplica.size = 1;
+  ising1.mainReplica.nodeMaxValue = 1;
+  ising1.mainReplica.nodeMinValue = 1;
+  ising1.mainReplica.arcMaxValue = 1;
+  ising1.mainReplica.arcMinValue = 1;
   ising1.numberOfReplica = 2;
+  ising1.tranverseField = 1;
   ising1.mainReplica.generate();
   ising1.generate();
   ising1.mainReplica.nodes[0][0].spin = 1;
   ising1.mainReplica.nodes[0][0].value = 1;
   ising2 = ising1;
-  REQUIRE(ising1.getEnergy() > -2.4);
-  REQUIRE(ising1.getEnergy() < -2.3);
+  REQUIRE(ising1.getEnergy() == -3);
+  REQUIRE(ising2.getEnergy() == -3);
   REQUIRE(ising1.getDelta(&ising2) == 0);
   REQUIRE(ising2.getDelta(&ising1) == 0);
-  ising1.slices[0].nodes[0][0].value = 2;
-  REQUIRE(ising1.getDelta(&ising2) == -2);
-  REQUIRE(ising2.getDelta(&ising1) == 2);
+  ising1.slices[0].nodes[0][0].flip();
+  REQUIRE(ising1.getEnergy() == 1);
+  REQUIRE(ising2.getEnergy() == -3);
+  REQUIRE(ising1.getDelta(&ising2) == 4);
+  REQUIRE(ising2.getDelta(&ising1) == -4);
 }
