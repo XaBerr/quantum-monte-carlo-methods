@@ -9,6 +9,5 @@
     "*.tcc": "cpp",
     "chrono": "cpp"
   },
-  "C_Cpp.loggingLevel": "Debug",
-  "C_Cpp.errorSquiggles": "Disabled"
+  "C_Cpp.loggingLevel": "Debug"
 }

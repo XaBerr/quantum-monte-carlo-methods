@@ -57,6 +57,27 @@ double Ising2dTransverse::getEnergy() {
   return energy;
 }
 
+double Ising2dTransverse::getIsingDiscreteEnergy() {
+  double energy = 0;
+  double tempEnergy;
+  if (slicesLength <= 0) return 0;
+  energy = slices[0].getEnergy();
+  for (int i = 0; i < slicesLength; i++) {
+    tempEnergy = slices[i].getEnergy();
+    if (energy > tempEnergy) energy = tempEnergy;
+  }
+  return energy;
+}
+
+double Ising2dTransverse::getIsingContinueEnergy() {
+  double energy = 0;
+  if (slicesLength <= 0) return 0;
+  for (int i = 0; i < slicesLength; i++) {
+    energy += slices[i].getEnergy();
+  }
+  return energy / slicesLength;
+}
+
 double Ising2dTransverse::getDelta(Ising2dTransverse* ising) {
   return (getEnergy() > ising->getEnergy() ? 1 : -1) *
          abs(getEnergy() - ising->getEnergy());

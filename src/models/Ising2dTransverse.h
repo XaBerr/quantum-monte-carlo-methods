@@ -10,6 +10,8 @@ class Ising2dTransverse {
   ~Ising2dTransverse();
   void generate();
   double getEnergy();
+  double getIsingDiscreteEnergy();
+  double getIsingContinueEnergy();
   double getDelta(Ising2dTransverse* ising);
   Ising2d* slices;
   Ising2d mainReplica;

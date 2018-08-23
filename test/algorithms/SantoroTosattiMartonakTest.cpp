@@ -19,6 +19,7 @@ TEST_CASE("SantoroTosattiMartonak generateNeighboringConfig()", "[stm]") {
 TEST_CASE("SantoroTosattiMartonak run()", "[stm]") {
   SantoroTosattiMartonak stm;
   double min = 999;
+  double temp;
   stm.startingConfig.numberOfReplica = 3;
   stm.startingConfig.mainReplica.size = 3;
   stm.startingConfig.mainReplica.generate();
@@ -37,9 +38,10 @@ TEST_CASE("SantoroTosattiMartonak run()", "[stm]") {
 
   for (int i = 0; i < 5; i++) {
     stm.run();
-    if (min > stm.endingConfig.getEnergy()) {
-      min = stm.endingConfig.getEnergy();
+    temp = stm.endingConfig.getIsingDiscreteEnergy();
+    if (min > temp) {
+      min = temp;
     }
   }
-  REQUIRE(stm.startingConfig.getEnergy() > min);
+  REQUIRE(stm.startingConfig.mainReplica.getEnergy() > min);
 }
