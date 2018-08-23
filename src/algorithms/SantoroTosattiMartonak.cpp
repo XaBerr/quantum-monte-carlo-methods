@@ -25,7 +25,6 @@ Ising2dTransverse SantoroTosattiMartonak::generateNeighboringConfig(
   for (int i = 0; i < _ising.numberOfReplica; i++) {
     _ising.slices[i].nodes[row][col].flip();
   }
-
   return _ising;
 }
 

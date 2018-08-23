@@ -7,12 +7,13 @@ TEST_CASE("SantoroTosattiMartonak SantoroTosattiMartonak()", "[stm]") {
 }
 
 TEST_CASE("SantoroTosattiMartonak generateNeighboringConfig()", "[stm]") {
-  // SantoroTosattiMartonak stm;
-  // Ising2dTransverse ising1, ising2;
-  // ising1.mainReplica.generate();
-  // ising1.generate();
-  // ising2 = stm.generateNeighboringConfig(ising1);
-  // REQUIRE(ising1.getEnergy() != ising2.getEnergy());
+  SantoroTosattiMartonak stm;
+  Ising2dTransverse ising1, ising2;
+  ising1.numberOfReplica = 4;
+  ising1.mainReplica.generate();
+  ising1.generate();
+  ising2 = stm.generateNeighboringConfig(ising1);
+  REQUIRE(ising1.getEnergy() != ising2.getEnergy());
 }
 
 TEST_CASE("SantoroTosattiMartonak run()", "[stm]") {

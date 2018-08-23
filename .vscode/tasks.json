@@ -18,7 +18,7 @@
     {
       "label": "build-build",
       "type": "shell",
-      "command": "g++ -g src/main.cpp src/lib/*.cpp src/models/*.cpp src/algorithms/*.cpp -o main.exe",
+      "command": "g++ -O0 src/main.cpp src/lib/*.cpp src/models/*.cpp src/algorithms/*.cpp -o main.exe",
       "dependsOn": [
         "build-clear"
       ]
@@ -26,7 +26,7 @@
     {
       "label": "build-clear",
       "type": "shell",
-      "command": "rm main.exe"
+      "command": "rm main.exe -force"
     },
     {
       "label": "test",
@@ -41,9 +41,17 @@
       }
     },
     {
+      "label": "test-speed",
+      "type": "shell",
+      "command": "make",
+      "dependsOn": [
+        "test-clear"
+      ]
+    },
+    {
       "label": "test-build",
       "type": "shell",
-      "command": "g++ -g test/test.cpp src/lib/*.cpp src/models/*.cpp src/algorithms/*.cpp -o test.exe",
+      "command": "g++ -O0 test/test.cpp src/lib/*.cpp src/models/*.cpp src/algorithms/*.cpp -o test.exe",
       "dependsOn": [
         "test-clear"
       ]
@@ -51,7 +59,7 @@
     {
       "label": "test-clear",
       "type": "shell",
-      "command": "rm test.exe"
+      "command": "rm test.exe -force"
     }
   ]
 }

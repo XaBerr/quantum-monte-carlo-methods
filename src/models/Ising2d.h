@@ -5,7 +5,8 @@
 class Ising2d {
  public:
   Ising2d();
-  Ising2d(Ising2d& ising);
+  Ising2d(const Ising2d& ising);
+  Ising2d& operator=(const Ising2d& ising);
   ~Ising2d();
   void generate();
   double getEnergy();

@@ -38,7 +38,7 @@ TEST_CASE("Ising2d getEnergy()", "[ising]") {
   REQUIRE(ising.getEnergy() != energy);
 }
 
-TEST_CASE("Ising2d Ising2d(Ising2d& ising)", "[ising]") {
+TEST_CASE("Ising2d ising1 = ising2", "[ising]") {
   Ising2d ising1, ising2;
   ising1.size = 2;
   ising1.periodicBoundary = true;
@@ -47,6 +47,8 @@ TEST_CASE("Ising2d Ising2d(Ising2d& ising)", "[ising]") {
   REQUIRE(ising2.size == ising1.size);
   REQUIRE(ising2.periodicBoundary == ising1.periodicBoundary);
   REQUIRE(ising2.getEnergy() == ising1.getEnergy());
+  ising1.nodes[0][0].flip();
+  REQUIRE(ising2.getEnergy() != ising1.getEnergy());
 }
 
 TEST_CASE("Ising2d getDelta()", "[ising1,ising2]") {

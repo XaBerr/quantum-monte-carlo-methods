@@ -9,14 +9,22 @@ Ising2dTransverse::Ising2dTransverse() {
   periodicBoundary = false;
 }
 
-Ising2dTransverse::Ising2dTransverse(Ising2dTransverse& ising) {
-  slices = ising.slices;
-  numberOfReplica = ising.numberOfReplica;
-  tranverseField = ising.tranverseField;
-  slicesLength = ising.slicesLength;
-  periodicBoundary = ising.periodicBoundary;
-  mainReplica = ising.mainReplica;
-  generate();
+Ising2dTransverse::Ising2dTransverse(const Ising2dTransverse& ising) {
+  *this = ising;
+}
+
+Ising2dTransverse& Ising2dTransverse::operator=(
+    const Ising2dTransverse& ising) {
+  if (this != &ising) {
+    slices = ising.slices;
+    numberOfReplica = ising.numberOfReplica;
+    tranverseField = ising.tranverseField;
+    slicesLength = ising.slicesLength;
+    periodicBoundary = ising.periodicBoundary;
+    mainReplica = ising.mainReplica;
+    generate();
+  }
+  return *this;
 }
 
 Ising2dTransverse::~Ising2dTransverse() {}

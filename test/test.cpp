@@ -4,5 +4,5 @@
 #include "models/Arc2Test.cpp"
 #include "models/Ising2dTest.cpp"
 #include "algorithms/SimulatedAnnealingTest.cpp"
-#include "models/Ising2dTransverseTest.cpp"
-#include "algorithms/SantoroTosattiMartonakTest.cpp"
+// #include "models/Ising2dTransverseTest.cpp"
+// #include "algorithms/SantoroTosattiMartonakTest.cpp"

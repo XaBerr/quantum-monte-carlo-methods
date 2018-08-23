@@ -1,6 +1,7 @@
 #include "Ising2d.h"
 #include <cstdlib>
 #include "../lib/functions.h"
+#include <stdio.h>
 
 Ising2d::Ising2d() {
   size = 3;
@@ -17,25 +18,30 @@ Ising2d::Ising2d() {
   arcMinValue = -1;
 }
 
-Ising2d::Ising2d(Ising2d& ising) {
-  size = ising.size;
-  favorAlignment = ising.favorAlignment;
-  favorSpinUp = ising.favorSpinUp;
-  nodeMaxValue = ising.nodeMaxValue;
-  nodeMinValue = ising.nodeMinValue;
-  arcMaxValue = ising.arcMaxValue;
-  arcMinValue = ising.arcMinValue;
-  periodicBoundary = ising.periodicBoundary;
-  generate();
-  for (int i = 0; i < nodesLength; i++) {
-    for (int j = 0; j < nodesLength; j++) {
-      nodes[i][j].value = ising.nodes[i][j].value;
-      nodes[i][j].spin = ising.nodes[i][j].spin;
+Ising2d::Ising2d(const Ising2d& ising) { *this = ising; }
+
+Ising2d& Ising2d::operator=(const Ising2d& ising) {
+  if (this != &ising) {
+    size = ising.size;
+    favorAlignment = ising.favorAlignment;
+    favorSpinUp = ising.favorSpinUp;
+    nodeMaxValue = ising.nodeMaxValue;
+    nodeMinValue = ising.nodeMinValue;
+    arcMaxValue = ising.arcMaxValue;
+    arcMinValue = ising.arcMinValue;
+    periodicBoundary = ising.periodicBoundary;
+    generate();
+    for (int i = 0; i < nodesLength; i++) {
+      for (int j = 0; j < nodesLength; j++) {
+        nodes[i][j].value = ising.nodes[i][j].value;
+        nodes[i][j].spin = ising.nodes[i][j].spin;
+      }
+    }
+    for (int i = 0; i < arcsLength; i++) {
+      arcs[i].value = ising.arcs[i].value;
     }
   }
-  for (int i = 0; i < arcsLength; i++) {
-    arcs[i].value = ising.arcs[i].value;
-  }
+  return *this;
 }
 
 Ising2d::~Ising2d() {}
