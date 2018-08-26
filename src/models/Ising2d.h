@@ -10,8 +10,8 @@ class Ising2d {
   Ising2d& operator=(const Ising2d& ising);
   ~Ising2d();
   void generate();
-  double getEnergy();
-  double getDelta(Ising2d* ising);
+  double getEnergy() const;
+  double getDelta(Ising2d* ising) const;
   Node** nodes;
   Arc2* arcs;
   int nodesLength;

@@ -72,7 +72,7 @@
     {
       "label": "test-build-catch",
       "type": "shell",
-      "command": "g++ -std=c++14 -O0 test/test.cpp src/models/*.cpp src/algorithms/*.cpp -o test.exe"
+      "command": "g++ -std=c++14 -O2 -c test/test.cpp -o testmain.o"
     },
     {
       "label": "test-build-nocatch",

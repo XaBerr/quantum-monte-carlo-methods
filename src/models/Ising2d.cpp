@@ -87,7 +87,7 @@ void Ising2d::generate() {
   }
 }
 
-double Ising2d::getEnergy() {
+double Ising2d::getEnergy() const {
   double energy = 0;
   int alpha = favorSpinUp ? -1 : 1;
   int beta = favorAlignment ? -1 : 1;
@@ -102,7 +102,7 @@ double Ising2d::getEnergy() {
   return energy;
 }
 
-double Ising2d::getDelta(Ising2d* ising) {
+double Ising2d::getDelta(Ising2d* ising) const {
   return (getEnergy() > ising->getEnergy() ? 1 : -1) *
          abs(getEnergy() - ising->getEnergy());
 }

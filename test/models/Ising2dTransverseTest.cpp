@@ -5,7 +5,7 @@ static Uniform uniform;
 
 TEST_CASE("Ising2dTransverse Ising2dTransverse()", "[ising]") {
   Ising2dTransverse ising;
-  REQUIRE(ising.slices == 0);
+  REQUIRE(ising.slices.size() == 0);
 }
 
 TEST_CASE("Ising2dTransverse getEnergy()", "[ising]") {
@@ -67,11 +67,11 @@ TEST_CASE("Ising2dTransverse getDelta()", "[ising1,ising2]") {
   ising2 = ising1;
   REQUIRE(ising1.getEnergy() == -3);
   REQUIRE(ising2.getEnergy() == -3);
-  REQUIRE(ising1.getDelta(&ising2) == 0);
-  REQUIRE(ising2.getDelta(&ising1) == 0);
+  REQUIRE(ising1.getDelta(ising2) == 0);
+  REQUIRE(ising2.getDelta(ising1) == 0);
   ising1.slices[0].nodes[0][0].flip();
   REQUIRE(ising1.getEnergy() == 1);
   REQUIRE(ising2.getEnergy() == -3);
-  REQUIRE(ising1.getDelta(&ising2) == 4);
-  REQUIRE(ising2.getDelta(&ising1) == -4);
+  REQUIRE(ising1.getDelta(ising2) == 4);
+  REQUIRE(ising2.getDelta(ising1) == -4);
 }

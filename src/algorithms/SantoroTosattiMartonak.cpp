@@ -39,7 +39,7 @@ void SantoroTosattiMartonak::run() {
     bestConfig.tranverseField =
         -log(tanh(currentField / (numberOfreplica * temperature)));
     trialConfig = generateNeighboringConfig(bestConfig);
-    delta = trialConfig.getDelta(&bestConfig);
+    delta = trialConfig.getDelta(bestConfig);
     if (uniform() < exp(-scale * delta / currentField)) {
       bestConfig = trialConfig;
     }

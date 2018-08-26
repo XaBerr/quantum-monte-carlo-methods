@@ -1,55 +1,51 @@
 #include "Ising2dTransverse.h"
-#include <cstdlib>
+#include <cmath>
+#include <limits>
+#include <algorithm>
 
 Ising2dTransverse::Ising2dTransverse() {
-  slices = 0;
   numberOfReplica = 3;
   tranverseField = 1;
-  slicesLength = 0;
   periodicBoundary = false;
 }
 
-Ising2dTransverse::Ising2dTransverse(const Ising2dTransverse& ising) {
-  *this = ising;
-}
+// Ising2dTransverse::Ising2dTransverse(const Ising2dTransverse& ising) {
+//   *this = ising;
+// }
 
-Ising2dTransverse& Ising2dTransverse::operator=(
-    const Ising2dTransverse& ising) {
-  if (this != &ising) {
-    slices = ising.slices;
-    numberOfReplica = ising.numberOfReplica;
-    tranverseField = ising.tranverseField;
-    slicesLength = ising.slicesLength;
-    periodicBoundary = ising.periodicBoundary;
-    mainReplica = ising.mainReplica;
-    slicesLength = numberOfReplica;
-    slices = new Ising2d[slicesLength];
-    for (int i = 0; i < slicesLength; i++) {
-      slices[i] = ising.slices[i];
-    }
-  }
-  return *this;
-}
+// Ising2dTransverse& Ising2dTransverse::operator=(
+//     const Ising2dTransverse& ising) {
+//   if (this != &ising) {
+//     slices = ising.slices;
+//     numberOfReplica = ising.numberOfReplica;
+//     tranverseField = ising.tranverseField;
+//     slicesLength = ising.slicesLength;
+//     periodicBoundary = ising.periodicBoundary;
+//     mainReplica = ising.mainReplica;
+//     slicesLength = numberOfReplica;
+//     slices = new Ising2d[slicesLength];
+//     for (int i = 0; i < slicesLength; i++) {
+//       slices[i] = ising.slices[i];
+//     }
+//   }
+//   return *this;
+// }
 
-Ising2dTransverse::~Ising2dTransverse() {}
+// Ising2dTransverse::~Ising2dTransverse() {}
 
 void Ising2dTransverse::generate() {
-  slicesLength = numberOfReplica;
-  slices = new Ising2d[slicesLength];
-  for (int i = 0; i < slicesLength; i++) {
-    slices[i] = mainReplica;
-  }
+  slices = std::vector<Ising2d>(numberOfReplica, mainReplica);
 }
 
-double Ising2dTransverse::getEnergy() {
+double Ising2dTransverse::getEnergy() const {
   double energy = 0;
-  for (int i = 0; i < slicesLength; i++) {
+  for (int i = 0; i < slices.size(); i++) {
     energy += slices[i].getEnergy();
     for (int j = 0; j < slices[i].nodesLength; j++) {
       for (int k = 0; k < slices[i].nodesLength; k++) {
-        if (periodicBoundary || ((i + 1) % slicesLength)) {
+        if (periodicBoundary || i != slices.size() - 1) {
           energy += -tranverseField * slices[i].nodes[j][k].spin *
-                    slices[(i + 1) % slicesLength].nodes[j][k].spin;
+                    slices[(i + 1) % slices.size()].nodes[j][k].spin;
         }
       }
     }
@@ -57,28 +53,26 @@ double Ising2dTransverse::getEnergy() {
   return energy;
 }
 
-double Ising2dTransverse::getIsingDiscreteEnergy() {
-  double energy = 0;
-  double tempEnergy;
-  if (slicesLength <= 0) return 0;
-  energy = slices[0].getEnergy();
-  for (int i = 0; i < slicesLength; i++) {
-    tempEnergy = slices[i].getEnergy();
-    if (energy > tempEnergy) energy = tempEnergy;
+double Ising2dTransverse::getIsingDiscreteEnergy() const {
+  double energy = std::numeric_limits<double>::max();
+  if (slices.size() <= 0) return 0;
+  for (auto& slice : slices) {
+    energy = std::min(energy, slice.getEnergy());
   }
   return energy;
 }
 
-double Ising2dTransverse::getIsingContinueEnergy() {
+double Ising2dTransverse::getIsingContinueEnergy() const {
   double energy = 0;
-  if (slicesLength <= 0) return 0;
-  for (int i = 0; i < slicesLength; i++) {
-    energy += slices[i].getEnergy();
+  if (slices.size() <= 0) return 0;
+  for (auto& slice : slices) {
+    energy += slice.getEnergy();
   }
-  return energy / slicesLength;
+  return energy / slices.size();
 }
 
-double Ising2dTransverse::getDelta(Ising2dTransverse* ising) {
-  return (getEnergy() > ising->getEnergy() ? 1 : -1) *
-         abs(getEnergy() - ising->getEnergy());
+double Ising2dTransverse::getDelta(const Ising2dTransverse& ising) const {
+  double myEnergy = getEnergy();
+  double otherEnergy = ising.getEnergy();
+  return (myEnergy > otherEnergy ? 1 : -1) * abs(myEnergy - otherEnergy);
 }

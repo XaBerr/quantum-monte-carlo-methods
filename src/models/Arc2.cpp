@@ -11,5 +11,3 @@ Arc2::Arc2(Node* _node1, Node* _node2, double _value) {
   node2 = _node2;
   value = _value;
 }
-
-Arc2::~Arc2() {}
