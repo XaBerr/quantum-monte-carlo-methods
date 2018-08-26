@@ -14,8 +14,6 @@ SantoroTosattiMartonak::SantoroTosattiMartonak() {
   scale = 10;
 }
 
-SantoroTosattiMartonak::~SantoroTosattiMartonak() {}
-
 Ising2dTransverse SantoroTosattiMartonak::generateNeighboringConfig(
     Ising2dTransverse _ising) {
   _ising.slices[(int)(uniform() * (float)(_ising.numberOfReplica - 1))]

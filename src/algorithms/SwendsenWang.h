@@ -6,7 +6,6 @@
 class SwendsenWang {
  public:
   SwendsenWang();
-  ~SwendsenWang();
   Ising2d generateNeighboringConfig(Ising2d _ising);
   void run();
 

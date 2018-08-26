@@ -12,8 +12,6 @@ SimulatedAnnealing::SimulatedAnnealing() {
   scale = 10;
 }
 
-SimulatedAnnealing::~SimulatedAnnealing() {}
-
 Ising2d SimulatedAnnealing::generateNeighboringConfig(Ising2d _ising) {
   _ising
       .nodes[(int)(uniform() * (float)(_ising.nodes.size() - 1))]

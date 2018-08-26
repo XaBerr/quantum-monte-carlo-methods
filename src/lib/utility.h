@@ -6,7 +6,6 @@
 
 class Uniform {
  private:
-  //   std::random_device rd;
   std::mt19937 mt;
   std::uniform_real_distribution<double> dist;
 

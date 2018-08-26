@@ -6,5 +6,3 @@
 static Uniform uniform;
 
 SwendsenWang::SwendsenWang() {}
-
-SwendsenWang::~SwendsenWang() {}

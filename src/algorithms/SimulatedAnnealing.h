@@ -6,7 +6,6 @@
 class SimulatedAnnealing {
  public:
   SimulatedAnnealing();
-  ~SimulatedAnnealing();
   Ising2d generateNeighboringConfig(Ising2d _ising);
   void run();
 

@@ -7,9 +7,6 @@
 class Ising2dTransverse {
  public:
   Ising2dTransverse();
-  // Ising2dTransverse(const Ising2dTransverse& ising);
-  // Ising2dTransverse& operator=(const Ising2dTransverse& ising);
-  // ~Ising2dTransverse();
   void generate();
   double getEnergy() const;
   double getIsingDiscreteEnergy() const;

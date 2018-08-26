@@ -6,7 +6,6 @@
 class SantoroTosattiMartonak {
  public:
   SantoroTosattiMartonak();
-  ~SantoroTosattiMartonak();
   Ising2dTransverse generateNeighboringConfig(Ising2dTransverse _ising);
   void run();
 

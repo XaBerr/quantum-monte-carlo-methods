@@ -7,9 +7,6 @@
 class Ising2d {
  public:
   Ising2d();
-  // Ising2d(const Ising2d& ising);
-  // Ising2d& operator=(const Ising2d& ising);
-  // ~Ising2d();
   void generate();
   double getEnergy() const;
   double getDelta(const Ising2d& ising) const;
