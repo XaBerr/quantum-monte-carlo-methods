@@ -11,7 +11,8 @@ TEST_CASE("Ising2d generate()", "[ising]") {
   ising.generate();
   for (int i = 0; i < ising.nodes.size(); i++) {
     for (int j = 0; j < ising.nodes.size(); j++) {
-      REQUIRE(ising.nodes[i][j].id != 0);
+      REQUIRE(ising.nodes[i][j].id ==
+              std::to_string(i) + "-" + std::to_string(j));
     }
   }
   for (int i = 0; i < ising.arcs.size(); i++) {

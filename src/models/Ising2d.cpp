@@ -23,6 +23,7 @@ void Ising2d::generate() {
   arcs.reserve(size * size * 4);
   for (int i = 0; i < nodes.size(); i++) {
     for (int j = 0; j < nodes[i].size(); j++) {
+      nodes[i][j].id = std::to_string(i) + "-" + std::to_string(j);
       nodes[i][j].value =
           uniform() * (nodeMaxValue - nodeMinValue) + nodeMinValue;
       if (i > 0) {
