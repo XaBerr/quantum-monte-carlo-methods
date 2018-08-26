@@ -1,7 +1,8 @@
-#include "Node.h"
-
 #ifndef Arc2_h
 #define Arc2_h
+
+#include "Node.h"
+
 class Arc2 {
  public:
   Arc2();

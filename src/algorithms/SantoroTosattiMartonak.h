@@ -1,7 +1,8 @@
-#include "../models/Ising2dTransverse.h"
-
 #ifndef SantoroTosattiMartonak_h
 #define SantoroTosattiMartonak_h
+
+#include "../models/Ising2dTransverse.h"
+
 class SantoroTosattiMartonak {
  public:
   SantoroTosattiMartonak();

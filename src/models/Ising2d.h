@@ -1,7 +1,8 @@
-#include "Arc2.h"
-
 #ifndef Ising2d_h
 #define Ising2d_h
+
+#include "Arc2.h"
+
 class Ising2d {
  public:
   Ising2d();

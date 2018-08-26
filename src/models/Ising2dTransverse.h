@@ -1,7 +1,8 @@
-#include "Ising2d.h"
-
 #ifndef Ising2dTransverse_h
 #define Ising2dTransverse_h
+
+#include "Ising2d.h"
+
 class Ising2dTransverse {
  public:
   Ising2dTransverse();

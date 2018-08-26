@@ -1,7 +1,8 @@
-#include "../models/Ising2d.h"
-
 #ifndef SimulatedAnnealing_h
 #define SimulatedAnnealing_h
+
+#include "../models/Ising2d.h"
+
 class SimulatedAnnealing {
  public:
   SimulatedAnnealing();

@@ -1,7 +1,8 @@
-#include "../models/Ising2d.h"
-
 #ifndef SwendsenWang_h
 #define SwendsenWang_h
+
+#include "../models/Ising2d.h"
+
 class SwendsenWang {
  public:
   SwendsenWang();
