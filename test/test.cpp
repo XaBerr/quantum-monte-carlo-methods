@@ -6,3 +6,4 @@
 #include "algorithms/SimulatedAnnealingTest.cpp"
 #include "models/Ising2dTransverseTest.cpp"
 #include "algorithms/SantoroTosattiMartonakTest.cpp"
+#include "algorithms/SwendsenWang.cpp"
