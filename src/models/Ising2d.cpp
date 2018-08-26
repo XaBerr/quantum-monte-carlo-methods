@@ -17,69 +17,41 @@ Ising2d::Ising2d() {
   arcMinValue = -1;
 }
 
-// Ising2d::Ising2d(const Ising2d& ising) { *this = ising; }
-
-// Ising2d& Ising2d::operator=(const Ising2d& ising) {
-//   if (this != &ising) {
-//     size = ising.size;
-//     favorAlignment = ising.favorAlignment;
-//     favorSpinUp = ising.favorSpinUp;
-//     nodeMaxValue = ising.nodeMaxValue;
-//     nodeMinValue = ising.nodeMinValue;
-//     arcMaxValue = ising.arcMaxValue;
-//     arcMinValue = ising.arcMinValue;
-//     periodicBoundary = ising.periodicBoundary;
-//     generate();
-//     for (int i = 0; i < nodes.size(); i++) {
-//       for (int j = 0; j < nodes.size(); j++) {
-//         nodes[i][j].value = ising.nodes[i][j].value;
-//         nodes[i][j].spin = ising.nodes[i][j].spin;
-//       }
-//     }
-//     for (int i = 0; i < arcs.size(); i++) {
-//       arcs[i].value = ising.arcs[i].value;
-//     }
-//   }
-//   return *this;
-// }
-
-// Ising2d::~Ising2d() {}
-
 void Ising2d::generate() {
-  int cont = 0;
   nodes = std::vector<std::vector<Node>>(size, std::vector<Node>(size));
-  arcs = std::vector<Arc2>((size - 1) * (size - 1) * 2 + (size - 1) * 2);
+  arcs = std::vector<Arc2>();
+  arcs.reserve(size * size * 4);
   for (int i = 0; i < nodes.size(); i++) {
-    for (int j = 0; j < nodes.size(); j++) {
-      nodes[i][j].id = (char*)"id";
+    for (int j = 0; j < nodes[i].size(); j++) {
       nodes[i][j].value =
           uniform() * (nodeMaxValue - nodeMinValue) + nodeMinValue;
       if (i > 0) {
-        arcs[cont].node1 = &(nodes[i - 1][j]);
-        arcs[cont].node2 = &(nodes[i][j]);
-        arcs[cont++].value =
-            uniform() * (arcMaxValue - arcMinValue) + arcMinValue;
+        Node* node1 = &(nodes[i - 1][j]);
+        Node* node2 = &(nodes[i][j]);
+        double value = uniform() * (arcMaxValue - arcMinValue) + arcMinValue;
+        arcs.emplace_back(node1, node2, value);
       }
       if (periodicBoundary && (i == nodes.size() - 1)) {
-        arcs[cont].node1 = &(nodes[i][j]);
-        arcs[cont].node2 = &(nodes[0][j]);
-        arcs[cont++].value =
-            uniform() * (arcMaxValue - arcMinValue) + arcMinValue;
+        Node* node1 = &(nodes[i][j]);
+        Node* node2 = &(nodes[0][j]);
+        double value = uniform() * (arcMaxValue - arcMinValue) + arcMinValue;
+        arcs.emplace_back(node1, node2, value);
       }
       if (j > 0) {
-        arcs[cont].node1 = &(nodes[i][j - 1]);
-        arcs[cont].node2 = &(nodes[i][j]);
-        arcs[cont++].value =
-            uniform() * (arcMaxValue - arcMinValue) + arcMinValue;
+        Node* node1 = &(nodes[i][j - 1]);
+        Node* node2 = &(nodes[i][j]);
+        double value = uniform() * (arcMaxValue - arcMinValue) + arcMinValue;
+        arcs.emplace_back(node1, node2, value);
       }
       if (periodicBoundary && (j == nodes.size() - 1)) {
-        arcs[cont].node1 = &(nodes[i][j]);
-        arcs[cont].node2 = &(nodes[i][0]);
-        arcs[cont++].value =
-            uniform() * (arcMaxValue - arcMinValue) + arcMinValue;
+        Node* node1 = &(nodes[i][j]);
+        Node* node2 = &(nodes[i][0]);
+        double value = uniform() * (arcMaxValue - arcMinValue) + arcMinValue;
+        arcs.emplace_back(node1, node2, value);
       }
     }
   }
+  arcs.shrink_to_fit();
 }
 
 double Ising2d::getEnergy() const {
@@ -87,7 +59,7 @@ double Ising2d::getEnergy() const {
   int alpha = favorSpinUp ? -1 : 1;
   int beta = favorAlignment ? -1 : 1;
   for (int i = 0; i < nodes.size(); i++) {
-    for (int j = 0; j < nodes.size(); j++) {
+    for (int j = 0; j < nodes[i].size(); j++) {
       energy += alpha * nodes[i][j].value * nodes[i][j].spin;
     }
   }

@@ -9,30 +9,6 @@ Ising2dTransverse::Ising2dTransverse() {
   periodicBoundary = false;
 }
 
-// Ising2dTransverse::Ising2dTransverse(const Ising2dTransverse& ising) {
-//   *this = ising;
-// }
-
-// Ising2dTransverse& Ising2dTransverse::operator=(
-//     const Ising2dTransverse& ising) {
-//   if (this != &ising) {
-//     slices = ising.slices;
-//     numberOfReplica = ising.numberOfReplica;
-//     tranverseField = ising.tranverseField;
-//     slicesLength = ising.slicesLength;
-//     periodicBoundary = ising.periodicBoundary;
-//     mainReplica = ising.mainReplica;
-//     slicesLength = numberOfReplica;
-//     slices = new Ising2d[slicesLength];
-//     for (int i = 0; i < slicesLength; i++) {
-//       slices[i] = ising.slices[i];
-//     }
-//   }
-//   return *this;
-// }
-
-// Ising2dTransverse::~Ising2dTransverse() {}
-
 void Ising2dTransverse::generate() {
   slices = std::vector<Ising2d>(numberOfReplica, mainReplica);
 }
@@ -42,7 +18,7 @@ double Ising2dTransverse::getEnergy() const {
   for (int i = 0; i < slices.size(); i++) {
     energy += slices[i].getEnergy();
     for (int j = 0; j < slices[i].nodes.size(); j++) {
-      for (int k = 0; k < slices[i].nodes.size(); k++) {
+      for (int k = 0; k < slices[i].nodes[j].size(); k++) {
         if (periodicBoundary || i != slices.size() - 1) {
           energy += -tranverseField * slices[i].nodes[j][k].spin *
                     slices[(i + 1) % slices.size()].nodes[j][k].spin;
