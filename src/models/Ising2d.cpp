@@ -1,8 +1,6 @@
 #include "Ising2d.h"
-#include <cstdlib>
 #include "../lib/utility.h"
-#include <stdio.h>
-#include <stdio.h>
+#include <cmath>
 
 Uniform uniform;
 
@@ -58,7 +56,7 @@ void Ising2d::generate() {
   for (int i = 0; i < nodesLength; i++) {
     nodes[i] = new Node[nodesLength];
     for (int j = 0; j < nodesLength; j++) {
-      nodes[i][j].id = (char*)(i + " " + j);
+      nodes[i][j].id = (char*)"id";
       nodes[i][j].value =
           uniform() * (nodeMaxValue - nodeMinValue) + nodeMinValue;
       if (i > 0) {

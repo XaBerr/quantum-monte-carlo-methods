@@ -68,6 +68,16 @@
       "label": "test-clear",
       "type": "shell",
       "command": "rm test.exe -force"
+    },
+    {
+      "label": "test-build-catch",
+      "type": "shell",
+      "command": "g++ -std=c++14 -O0 test/test.cpp src/models/*.cpp src/algorithms/*.cpp -o test.exe"
+    },
+    {
+      "label": "test-build-nocatch",
+      "type": "shell",
+      "command": "g++ -std=c++14 -O0 src/models/*.cpp src/algorithms/*.cpp test/models/*.cpp test/algorithms/*.cpp test/lib/*.cpp testmain.o -o test.exe"
     }
   ]
 }
