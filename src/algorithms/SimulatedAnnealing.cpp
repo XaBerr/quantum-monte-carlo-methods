@@ -3,7 +3,7 @@
 #include <math.h>
 #include <stdio.h>
 
-Uniform uniform;
+static Uniform uniform;
 
 SimulatedAnnealing::SimulatedAnnealing() {
   startingTemperature = 100.0;
