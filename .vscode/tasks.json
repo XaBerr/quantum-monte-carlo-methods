@@ -59,7 +59,7 @@
     {
       "label": "test-build",
       "type": "shell",
-      "command": "g++ -std=c++14 -O0 test/test.cpp src/models/*.cpp src/algorithms/*.cpp -o test.exe",
+      "command": "g++ -std=c++14 -O0 src/models/*.cpp src/algorithms/*.cpp test/models/*.cpp test/algorithms/*.cpp test/lib/*.cpp testmain.o -o test.exe",
       "dependsOn": [
         "test-clear"
       ]
