@@ -1,7 +1,10 @@
 #include "Ising2d.h"
 #include <cstdlib>
-#include "../lib/functions.h"
+#include "../lib/utility.h"
 #include <stdio.h>
+#include <stdio.h>
+
+Uniform uniform;
 
 Ising2d::Ising2d() {
   size = 3;

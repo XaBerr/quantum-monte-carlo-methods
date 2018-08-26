@@ -18,7 +18,7 @@
     {
       "label": "build-build",
       "type": "shell",
-      "command": "g++ -std=c++14 -O0 src/main.cpp src/lib/*.cpp src/models/*.cpp src/algorithms/*.cpp -o main.exe",
+      "command": "g++ -std=c++14 -O0 src/main.cpp src/models/*.cpp src/algorithms/*.cpp -o main.exe",
       "dependsOn": [
         "build-clear"
       ]
@@ -51,7 +51,7 @@
     {
       "label": "test-debug",
       "type": "shell",
-      "command": "g++ -std=c++14 -g test/test.cpp src/lib/*.cpp src/models/*.cpp src/algorithms/*.cpp -o test.exe",
+      "command": "g++ -std=c++14 -g test/test.cpp src/models/*.cpp src/algorithms/*.cpp -o test.exe",
       "dependsOn": [
         "test-clear"
       ]
@@ -59,7 +59,7 @@
     {
       "label": "test-build",
       "type": "shell",
-      "command": "g++ -std=c++14 -O0 test/test.cpp src/lib/*.cpp src/models/*.cpp src/algorithms/*.cpp -o test.exe",
+      "command": "g++ -std=c++14 -O0 test/test.cpp src/models/*.cpp src/algorithms/*.cpp -o test.exe",
       "dependsOn": [
         "test-clear"
       ]

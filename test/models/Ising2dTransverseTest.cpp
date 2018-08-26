@@ -1,6 +1,8 @@
 #include "../../src/include.h"
 #include "../catch.hpp"
 
+static Uniform uniform;
+
 TEST_CASE("Ising2dTransverse Ising2dTransverse()", "[ising]") {
   Ising2dTransverse ising;
   REQUIRE(ising.slices == 0);

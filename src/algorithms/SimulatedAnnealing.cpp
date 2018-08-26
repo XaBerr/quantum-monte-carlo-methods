@@ -1,7 +1,9 @@
 #include "SimulatedAnnealing.h"
-#include "../lib/functions.h"
+#include "../lib/utility.h"
 #include <math.h>
 #include <stdio.h>
+
+Uniform uniform;
 
 SimulatedAnnealing::SimulatedAnnealing() {
   startingTemperature = 100.0;

@@ -5,11 +5,11 @@
 
 using namespace std;
 
-#include "lib/functions.h"
+#include "lib/utility.h"
 #include "models/Node.h"
 #include "models/Arc2.h"
 #include "models/Ising2d.h"
 #include "algorithms/SimulatedAnnealing.h"
 #include "models/Ising2dTransverse.h"
 #include "algorithms/SantoroTosattiMartonak.h"
-#include "algorithms/SwendsenWang.h"
+// #include "algorithms/SwendsenWang.h"

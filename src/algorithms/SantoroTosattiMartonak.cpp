@@ -1,7 +1,9 @@
 #include "SantoroTosattiMartonak.h"
-#include "../lib/functions.h"
+#include "../lib/utility.h"
 #include <math.h>
 #include <stdio.h>
+
+Uniform uniform;
 
 SantoroTosattiMartonak::SantoroTosattiMartonak() {
   temperature = 1;
