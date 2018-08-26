@@ -19,11 +19,11 @@ SantoroTosattiMartonak::~SantoroTosattiMartonak() {}
 Ising2dTransverse SantoroTosattiMartonak::generateNeighboringConfig(
     Ising2dTransverse _ising) {
   _ising.slices[(int)(uniform() * (float)(_ising.numberOfReplica - 1))]
-      .nodes[(int)(uniform() * (float)(_ising.mainReplica.nodesLength - 1))]
-            [(int)(uniform() * (float)(_ising.mainReplica.nodesLength - 1))]
+      .nodes[(int)(uniform() * (float)(_ising.mainReplica.nodes.size() - 1))]
+            [(int)(uniform() * (float)(_ising.mainReplica.nodes.size() - 1))]
       .flip();
-  int row = (int)(uniform() * (float)(_ising.mainReplica.nodesLength - 1));
-  int col = (int)(uniform() * (float)(_ising.mainReplica.nodesLength - 1));
+  int row = (int)(uniform() * (float)(_ising.mainReplica.nodes.size() - 1));
+  int col = (int)(uniform() * (float)(_ising.mainReplica.nodes.size() - 1));
   for (int i = 0; i < _ising.numberOfReplica; i++) {
     _ising.slices[i].nodes[row][col].flip();
   }

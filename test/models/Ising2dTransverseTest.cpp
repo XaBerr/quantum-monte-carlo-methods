@@ -18,8 +18,8 @@ TEST_CASE("Ising2dTransverse getEnergy()", "[ising]") {
   double energy = ising.getEnergy();
   REQUIRE(energy != 0);
   ising.slices[(int)(uniform() * (float)(ising.numberOfReplica - 1))]
-      .nodes[(int)(uniform() * (float)(ising.mainReplica.nodesLength - 1))]
-            [(int)(uniform() * (float)(ising.mainReplica.nodesLength - 1))]
+      .nodes[(int)(uniform() * (float)(ising.mainReplica.nodes.size() - 1))]
+            [(int)(uniform() * (float)(ising.mainReplica.nodes.size() - 1))]
       .flip();
   REQUIRE(energy != ising.getEnergy());
   ising.periodicBoundary = true;

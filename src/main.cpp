@@ -10,8 +10,9 @@ int main(int argc, char const *argv[]) {
   1 1 1
   1 1 1
   */
-  for (int i = 0; i < sa.startingConfig.nodesLength; i++) {
-    for (int j = 0; j < sa.startingConfig.nodesLength; j++) {
+  for (int i = 0; i < sa.startingConfig.nodes.size();; i++) {
+    for (int j = 0; j < sa.startingConfig.nodes.size())
+      ; j++) {
       sa.startingConfig.nodes[i][j].value = 1;
       sa.startingConfig.nodes[i][j].spin = (uniform() < 0.5) ? 1 : -1;
     }
@@ -22,7 +23,7 @@ int main(int argc, char const *argv[]) {
   1 1 1
   1 1 1
   */
-  for (int i = 0; i < sa.startingConfig.arcsLength; i++) {
+  for (int i = 0; i < sa.startingConfig.arcs.size(); i++) {
     sa.startingConfig.arcs[i].value = 1;
   }
 

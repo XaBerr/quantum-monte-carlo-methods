@@ -41,8 +41,8 @@ double Ising2dTransverse::getEnergy() const {
   double energy = 0;
   for (int i = 0; i < slices.size(); i++) {
     energy += slices[i].getEnergy();
-    for (int j = 0; j < slices[i].nodesLength; j++) {
-      for (int k = 0; k < slices[i].nodesLength; k++) {
+    for (int j = 0; j < slices[i].nodes.size(); j++) {
+      for (int k = 0; k < slices[i].nodes.size(); k++) {
         if (periodicBoundary || i != slices.size() - 1) {
           energy += -tranverseField * slices[i].nodes[j][k].spin *
                     slices[(i + 1) % slices.size()].nodes[j][k].spin;

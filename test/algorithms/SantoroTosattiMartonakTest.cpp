@@ -26,14 +26,14 @@ TEST_CASE("SantoroTosattiMartonak run()", "[stm]") {
   stm.startingConfig.mainReplica.size = 3;
   stm.startingConfig.mainReplica.generate();
 
-  for (int i = 0; i < stm.startingConfig.mainReplica.nodesLength; i++) {
-    for (int j = 0; j < stm.startingConfig.mainReplica.nodesLength; j++) {
+  for (int i = 0; i < stm.startingConfig.mainReplica.nodes.size(); i++) {
+    for (int j = 0; j < stm.startingConfig.mainReplica.nodes.size(); j++) {
       stm.startingConfig.mainReplica.nodes[i][j].value = 1;
       stm.startingConfig.mainReplica.nodes[i][j].spin =
           (uniform() < 0.5) ? 1 : -1;
     }
   }
-  for (int i = 0; i < stm.startingConfig.mainReplica.arcsLength; i++) {
+  for (int i = 0; i < stm.startingConfig.mainReplica.arcs.size(); i++) {
     stm.startingConfig.mainReplica.arcs[i].value = 1;
   }
   stm.startingConfig.generate();
