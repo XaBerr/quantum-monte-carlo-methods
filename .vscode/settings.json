@@ -44,5 +44,6 @@
     "type_traits": "cpp",
     "typeinfo": "cpp"
   },
-  "C_Cpp.loggingLevel": "Debug"
+  "C_Cpp.loggingLevel": "Debug",
+  "C_Cpp.errorSquiggles": "Disabled"
 }

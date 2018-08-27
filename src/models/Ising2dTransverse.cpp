@@ -4,13 +4,13 @@
 #include <algorithm>
 
 Ising2dTransverse::Ising2dTransverse() {
-  numberOfReplica = 3;
+  numberOfreplicas = 3;
   tranverseField = 1;
   periodicBoundary = false;
 }
 
 void Ising2dTransverse::generate() {
-  slices = std::vector<Ising2d>(numberOfReplica, mainReplica);
+  slices = std::vector<Ising2d>(numberOfreplicas, mainReplica);
 }
 
 double Ising2dTransverse::getEnergy() const {

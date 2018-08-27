@@ -12,7 +12,7 @@ class SantoroTosattiMartonak {
   Ising2dTransverse startingConfig;
   Ising2dTransverse endingConfig;
   double temperature;
-  double numberOfreplica;
+  double numberOfreplicas;
   double startingField;
   double endingField;
   double deltaField;

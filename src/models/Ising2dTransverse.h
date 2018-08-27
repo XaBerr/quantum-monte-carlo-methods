@@ -14,7 +14,7 @@ class Ising2dTransverse {
   double getDelta(const Ising2dTransverse& ising) const;
   std::vector<Ising2d> slices;
   Ising2d mainReplica;
-  int numberOfReplica;
+  int numberOfreplicas;
   double tranverseField;
   double periodicBoundary;
 };

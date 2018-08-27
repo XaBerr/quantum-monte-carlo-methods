@@ -12,4 +12,4 @@ using namespace std;
 #include "algorithms/SimulatedAnnealing.h"
 #include "models/Ising2dTransverse.h"
 #include "algorithms/SantoroTosattiMartonak.h"
-// #include "algorithms/SwendsenWang.h"
+#include "algorithms/SwendsenWang.h"

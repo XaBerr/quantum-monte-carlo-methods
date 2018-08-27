@@ -7,7 +7,7 @@ static Uniform uniform;
 
 SantoroTosattiMartonak::SantoroTosattiMartonak() {
   temperature = 1;
-  numberOfreplica = 3;
+  numberOfreplicas = 3;
   startingField = 100;
   endingField = 0;
   deltaField = 1;
@@ -16,13 +16,13 @@ SantoroTosattiMartonak::SantoroTosattiMartonak() {
 
 Ising2dTransverse SantoroTosattiMartonak::generateNeighboringConfig(
     Ising2dTransverse _ising) {
-  _ising.slices[(int)(uniform() * (float)(_ising.numberOfReplica - 1))]
+  _ising.slices[(int)(uniform() * (float)(_ising.numberOfreplicas - 1))]
       .nodes[(int)(uniform() * (float)(_ising.mainReplica.nodes.size() - 1))]
             [(int)(uniform() * (float)(_ising.mainReplica.nodes.size() - 1))]
       .flip();
   int row = (int)(uniform() * (float)(_ising.mainReplica.nodes.size() - 1));
   int col = (int)(uniform() * (float)(_ising.mainReplica.nodes.size() - 1));
-  for (int i = 0; i < _ising.numberOfReplica; i++) {
+  for (int i = 0; i < _ising.numberOfreplicas; i++) {
     _ising.slices[i].nodes[row][col].flip();
   }
   return _ising;
@@ -35,7 +35,7 @@ void SantoroTosattiMartonak::run() {
   for (double currentField = startingField; currentField > endingField;
        currentField -= deltaField) {
     bestConfig.tranverseField =
-        -log(tanh(currentField / (numberOfreplica * temperature)));
+        -log(tanh(currentField / (numberOfreplicas * temperature)));
     trialConfig = generateNeighboringConfig(bestConfig);
     delta = trialConfig.getDelta(bestConfig);
     if (uniform() < exp(-scale * delta / currentField)) {

@@ -17,7 +17,7 @@ TEST_CASE("Ising2dTransverse getEnergy()", "[ising]") {
   ising.generate();
   double energy = ising.getEnergy();
   REQUIRE(energy != 0);
-  ising.slices[(int)(uniform() * (float)(ising.numberOfReplica - 1))]
+  ising.slices[(int)(uniform() * (float)(ising.numberOfreplicas - 1))]
       .nodes[(int)(uniform() * (float)(ising.mainReplica.nodes.size() - 1))]
             [(int)(uniform() * (float)(ising.mainReplica.nodes.size() - 1))]
       .flip();
@@ -31,13 +31,13 @@ TEST_CASE("Ising2dTransverse getEnergy()", "[ising]") {
 
 TEST_CASE("Ising2dTransverse  ising1 = ising2", "[ising]") {
   Ising2dTransverse ising1, ising2;
-  ising1.numberOfReplica = 2;
+  ising1.numberOfreplicas = 2;
   ising1.periodicBoundary = true;
   ising1.mainReplica.periodicBoundary = true;
   ising1.mainReplica.generate();
   ising1.generate();
   ising2 = ising1;
-  REQUIRE(ising2.numberOfReplica == ising1.numberOfReplica);
+  REQUIRE(ising2.numberOfreplicas == ising1.numberOfreplicas);
   REQUIRE(ising2.periodicBoundary == ising1.periodicBoundary);
   REQUIRE(ising2.mainReplica.periodicBoundary ==
           ising1.mainReplica.periodicBoundary);
@@ -58,7 +58,7 @@ TEST_CASE("Ising2dTransverse getDelta()", "[ising1,ising2]") {
   ising1.mainReplica.nodeMinValue = 1;
   ising1.mainReplica.arcMaxValue = 1;
   ising1.mainReplica.arcMinValue = 1;
-  ising1.numberOfReplica = 2;
+  ising1.numberOfreplicas = 2;
   ising1.tranverseField = 1;
   ising1.mainReplica.generate();
   ising1.generate();

@@ -11,7 +11,7 @@ TEST_CASE("SantoroTosattiMartonak SantoroTosattiMartonak()", "[stm]") {
 TEST_CASE("SantoroTosattiMartonak generateNeighboringConfig()", "[stm]") {
   SantoroTosattiMartonak stm;
   Ising2dTransverse ising1, ising2;
-  ising1.numberOfReplica = 4;
+  ising1.numberOfreplicas = 4;
   ising1.mainReplica.generate();
   ising1.generate();
   ising2 = stm.generateNeighboringConfig(ising1);
@@ -22,7 +22,7 @@ TEST_CASE("SantoroTosattiMartonak run()", "[stm]") {
   SantoroTosattiMartonak stm;
   double min = 999;
   double temp;
-  stm.startingConfig.numberOfReplica = 3;
+  stm.startingConfig.numberOfreplicas = 3;
   stm.startingConfig.mainReplica.size = 3;
   stm.startingConfig.mainReplica.generate();
 
