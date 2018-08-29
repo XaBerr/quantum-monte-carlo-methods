@@ -7,9 +7,8 @@ TEST_CASE("Uniform uniform", "[uniform]") {
   bool equals = true;
   for (int i = 0; i < 50; i++) {
     array[i] = uniform();
-    if (i > 0 && array[i] != array[i - 1]) {
+    if (i > 0 && array[i] != array[i - 1])
       equals = false;
-    }
   }
   REQUIRE(!equals);
 }

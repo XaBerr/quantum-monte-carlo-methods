@@ -18,18 +18,19 @@ TEST_CASE("SimulatedAnnealing generateNeighboringConfig()", "[sa]") {
 
 TEST_CASE("SimulatedAnnealing run()", "[sa]") {
   SimulatedAnnealing sa;
-  double min = 999;
+  double min             = 999;
   sa.startingConfig.size = 3;
   sa.startingConfig.generate();
   for (int i = 0; i < sa.startingConfig.nodes.size(); i++) {
-    for (int j = 0; j < sa.startingConfig.nodes.size(); j++) {
+    for (int j = 0; j < sa.startingConfig.nodes[i].size(); j++) {
       sa.startingConfig.nodes[i][j].value = 1;
-      sa.startingConfig.nodes[i][j].spin = (uniform() < 0.5) ? 1 : -1;
+      sa.startingConfig.nodes[i][j].spin  = (uniform() < 0.5) ? 1 : -1;
     }
   }
-  for (int i = 0; i < sa.startingConfig.arcs.size(); i++) {
-    sa.startingConfig.arcs[i].value = 1;
-  }
+  for (int i = 0; i < sa.startingConfig.arcs.size(); i++)
+    for (int j = 0; j < sa.startingConfig.arcs[i].size(); j++)
+      for (int k = 0; k < sa.startingConfig.arcs[i][k].size(); k++)
+        sa.startingConfig.arcs[i][j][k].value = 1;
 
   for (int i = 0; i < 5; i++) {
     sa.run();

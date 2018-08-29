@@ -6,23 +6,22 @@
 static Uniform uniform;
 
 SwendsenWang::SwendsenWang() {
-  temperature = 1;
-  scale = 1;
+  temperature        = 1;
+  scale              = 1;
   numberOfIterations = 1;
 }
 
 std::vector<Arc2*> SwendsenWang::addJoins(Ising2d ising) {
   std::vector<Arc2*> joins;
-  for (auto& j : ising.arcs) {
-    if (j.node1 == j.node2 && uniform() > 0.8) {
-      joins.push_back(&j);
-    }
-  }
+  // for (auto& row : ising.arcs)
+  //   for (auto& col : row)
+  //     for (auto& j : col)
+  //       if (&(j.node1) != nullptr && &(j.node2) != nullptr && j.node1 == j.node2 && uniform() > 0.8)
+  //         joins.push_back(&j);
   return joins;
 }
 
-std::vector<Arc2*> SwendsenWang::removeFakeJoin(Ising2d ising,
-                                                std::vector<Arc2*> cuts) {
+std::vector<Arc2*> SwendsenWang::removeFakeJoin(Ising2d ising, std::vector<Arc2*> cuts) {
   std::vector<Arc2*> joins;
   return joins;
 }

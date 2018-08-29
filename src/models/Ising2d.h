@@ -4,6 +4,10 @@
 #include <vector>
 #include "Arc2.h"
 
+#define UP 0
+#define LEFT 1
+#define DIM 2
+
 class Ising2d {
  public:
   Ising2d();
@@ -11,7 +15,7 @@ class Ising2d {
   double getEnergy() const;
   double getDelta(const Ising2d& ising) const;
   std::vector<std::vector<Node>> nodes;
-  std::vector<Arc2> arcs;
+  std::vector<std::vector<std::vector<Arc2>>> arcs;
   int size;
   bool favorAlignment;
   bool favorSpinUp;

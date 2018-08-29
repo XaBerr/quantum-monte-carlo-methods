@@ -7,16 +7,15 @@ static Uniform uniform;
 
 SimulatedAnnealing::SimulatedAnnealing() {
   startingTemperature = 100.0;
-  deltaTemperature = 1.0;
-  endingTemperature = 0.0;
-  scale = 10;
+  deltaTemperature    = 1.0;
+  endingTemperature   = 0.0;
+  scale               = 10;
 }
 
 Ising2d SimulatedAnnealing::generateNeighboringConfig(Ising2d _ising) {
-  _ising
-      .nodes[(int)(uniform() * (float)(_ising.nodes.size() - 1))]
-            [(int)(uniform() * (float)(_ising.nodes.size() - 1))]
-      .flip();
+  _ising.nodes[(int)(uniform() * (float)(_ising.nodes.size() - 1))]
+              [(int)(uniform() * (float)(_ising.nodes.size() - 1))]
+                  .flip();
   return _ising;
 }
 
@@ -28,10 +27,9 @@ void SimulatedAnnealing::run() {
        currentTemperature > endingTemperature;
        currentTemperature -= deltaTemperature) {
     trialConfig = generateNeighboringConfig(bestConfig);
-    delta = trialConfig.getDelta(bestConfig);
-    if (uniform() < exp(-scale * delta / currentTemperature)) {
+    delta       = trialConfig.getDelta(bestConfig);
+    if (uniform() < exp(-scale * delta / currentTemperature))
       bestConfig = trialConfig;
-    }
   }
   endingConfig = bestConfig;
 }

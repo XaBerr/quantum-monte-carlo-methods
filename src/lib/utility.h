@@ -10,8 +10,7 @@ class Uniform {
   std::uniform_real_distribution<double> dist;
 
  public:
-  Uniform(double lower = 0.0, double upper = 1.0)
-      : mt(std::time(nullptr)), dist(lower, upper) {}
+  Uniform(double lower = 0.0, double upper = 1.0) : mt(std::time(nullptr)), dist(lower, upper) {}
   double operator()() { return dist(mt); }
 };
 
