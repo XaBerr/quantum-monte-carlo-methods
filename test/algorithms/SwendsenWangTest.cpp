@@ -70,6 +70,18 @@ TEST_CASE("SwendsenWang [prob] randomFlip(clusters)", "[sw, ising1]") {
   REQUIRE(!equals);
 }
 
+TEST_CASE("SwendsenWang [prob] run()", "[sw]") {
+  SwendsenWang sw;
+  sw.startingConfig.generate();
+  sw.numberOfIterations = 100;
+  double min            = 999;
+  for (int i = 0; i < 10; i++) {
+    sw.run();
+    if (min > sw.endingConfig.getEnergy()) min = sw.endingConfig.getEnergy();
+  }
+  REQUIRE(sw.startingConfig.getEnergy() > min);
+}
+
 void printJoins(std::vector<std::vector<std::vector<bool>>> joins) {
   printf("-----------UP-----------\n");
   for (int i = 0; i < joins.size(); i++) {
