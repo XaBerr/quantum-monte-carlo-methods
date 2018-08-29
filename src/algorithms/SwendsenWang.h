@@ -7,8 +7,8 @@ class SwendsenWang {
  public:
   SwendsenWang();
   std::vector<std::vector<std::vector<bool>>> generateJoins(Ising2d ising);
-  std::vector<std::vector<Node*>> generateClusters(Ising2d ising, std::vector<std::vector<std::vector<bool>>> joins);
-  void randomFlip(std::vector<std::vector<Node*>> clusters);
+  std::vector<std::vector<Node *>> generateClusters(Ising2d &ising, std::vector<std::vector<std::vector<bool>>> joins);
+  void randomFlip(std::vector<std::vector<Node *>> clusters);
   void run();
 
   Ising2d startingConfig;

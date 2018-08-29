@@ -40,7 +40,7 @@ TEST_CASE("SantoroTosattiMartonak [prob] run()", "[stm]") {
 
   stm.startingConfig.generate();
 
-  for (int i = 0; i < 5; i++) {
+  for (int i = 0; i < 10; i++) {
     stm.run();
     temp = stm.endingConfig.getIsingDiscreteEnergy();
     if (min > temp) min = temp;

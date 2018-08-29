@@ -32,7 +32,7 @@ TEST_CASE("SimulatedAnnealing [prob] run()", "[sa]") {
       for (int k = 0; k < sa.startingConfig.arcs[i][k].size(); k++)
         sa.startingConfig.arcs[i][j][k].value = 1;
 
-  for (int i = 0; i < 5; i++) {
+  for (int i = 0; i < 10; i++) {
     sa.run();
     if (min > sa.endingConfig.getEnergy()) min = sa.endingConfig.getEnergy();
   }
