@@ -13,3 +13,5 @@ using namespace std;
 #include "models/Ising2dTransverse.h"
 #include "algorithms/SantoroTosattiMartonak.h"
 #include "algorithms/SwendsenWang.h"
+#include "algorithms/RiegerKawashimaContinuous.h"
+#include "algorithms/RiegerKawashimaDiscrete.h"
