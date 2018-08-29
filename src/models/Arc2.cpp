@@ -1,8 +1,8 @@
 #include "Arc2.h"
 
 Arc2::Arc2() {
-  node1 = 0;
-  node2 = 0;
+  node1 = nullptr;
+  node2 = nullptr;
   value = 0;
 }
 

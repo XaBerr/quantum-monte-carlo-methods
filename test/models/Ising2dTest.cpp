@@ -10,15 +10,16 @@ TEST_CASE("Ising2d generate()", "[ising]") {
   Ising2d ising;
   ising.generate();
   for (int i = 0; i < ising.nodes.size(); i++)
-    for (int j = 0; j < ising.nodes.size(); j++)
+    for (int j = 0; j < ising.nodes[i].size(); j++)
       REQUIRE(ising.nodes[i][j].id == std::to_string(i) + "-" + std::to_string(j));
 
   for (int i = 0; i < ising.arcs.size(); i++)
-    for (int j = 0; j < ising.arcs.size(); j++)
-      for (int k = 0; k < ising.arcs.size(); k++)
+    for (int j = 0; j < ising.arcs[i].size(); j++)
+      for (int k = 0; k < ising.arcs[i][j].size(); k++)
         if (i > 0 && j > 0) {
           REQUIRE(ising.arcs[i][j][k].node1 != nullptr);
           REQUIRE(ising.arcs[i][j][k].node2 != nullptr);
+          REQUIRE(ising.arcs[i][j][k].node1->id == std::to_string(i) + "-" + std::to_string(j));
         }
 
   ising.size = 1;

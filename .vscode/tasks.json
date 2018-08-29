@@ -51,9 +51,9 @@
     {
       "label": "test-debug",
       "type": "shell",
-      "command": "g++ -std=c++14 -g test/test.cpp src/models/*.cpp src/algorithms/*.cpp -o test.exe",
+      "command": "g++ -std=c++14 -g src/models/*.cpp src/algorithms/*.cpp test/models/*.cpp test/algorithms/*.cpp test/lib/*.cpp testmain.o -o test.exe",
       "dependsOn": [
-        "test-clear"
+        // "test-clear"
       ]
     },
     {

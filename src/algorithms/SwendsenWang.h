@@ -6,9 +6,8 @@
 class SwendsenWang {
  public:
   SwendsenWang();
-  std::vector<Arc2*> addJoins(Ising2d ising);
-  std::vector<Arc2*> removeFakeJoin(Ising2d ising, std::vector<Arc2*> cuts);
-  std::vector<std::vector<Node*>> findClusters(Ising2d ising);
+  std::vector<std::vector<std::vector<bool>>> generateJoins(Ising2d ising);
+  std::vector<std::vector<Node*>> generateClusters(Ising2d ising, std::vector<std::vector<std::vector<bool>>> joins);
   void randomFlip(std::vector<std::vector<Node*>> clusters);
   void run();
 

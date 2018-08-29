@@ -18,7 +18,7 @@ TEST_CASE("SantoroTosattiMartonak generateNeighboringConfig()", "[stm]") {
   REQUIRE(ising1.getEnergy() != ising2.getEnergy());
 }
 
-TEST_CASE("SantoroTosattiMartonak run()", "[stm]") {
+TEST_CASE("SantoroTosattiMartonak [prob] run()", "[stm]") {
   SantoroTosattiMartonak stm;
   double min = 999;
   double temp;

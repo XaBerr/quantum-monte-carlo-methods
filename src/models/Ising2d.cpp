@@ -46,7 +46,6 @@ void Ising2d::generate() {
       }
     }
   }
-  arcs.shrink_to_fit();
 }
 
 double Ising2d::getEnergy() const {

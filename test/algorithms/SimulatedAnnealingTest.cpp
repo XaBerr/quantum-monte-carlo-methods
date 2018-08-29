@@ -16,7 +16,7 @@ TEST_CASE("SimulatedAnnealing generateNeighboringConfig()", "[sa]") {
   REQUIRE(ising1.getEnergy() != ising2.getEnergy());
 }
 
-TEST_CASE("SimulatedAnnealing run()", "[sa]") {
+TEST_CASE("SimulatedAnnealing [prob] run()", "[sa]") {
   SimulatedAnnealing sa;
   double min             = 999;
   sa.startingConfig.size = 3;

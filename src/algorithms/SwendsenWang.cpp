@@ -11,73 +11,66 @@ SwendsenWang::SwendsenWang() {
   numberOfIterations = 1;
 }
 
-std::vector<Arc2*> SwendsenWang::addJoins(Ising2d ising) {
-  std::vector<Arc2*> joins;
-  // for (auto& row : ising.arcs)
-  //   for (auto& col : row)
-  //     for (auto& j : col)
-  //       if (&(j.node1) != nullptr && &(j.node2) != nullptr && j.node1 == j.node2 && uniform() > 0.8)
-  //         joins.push_back(&j);
+std::vector<std::vector<std::vector<bool>>> SwendsenWang::generateJoins(Ising2d ising) {
+  std::vector<std::vector<std::vector<bool>>> joins =
+      std::vector<std::vector<std::vector<bool>>>(ising.size, std::vector<std::vector<bool>>(ising.size, std::vector<bool>(DIM)));
+  int beta = ising.favorAlignment ? -1 : 1;
+  for (int i = 0; i < ising.arcs.size(); i++)
+    for (int j = 0; j < ising.arcs[i].size(); j++)
+      for (int k = 0; k < ising.arcs[i][j].size(); k++)
+        if (ising.arcs[i][j][k].node1 != nullptr &&
+            ising.arcs[i][j][k].node2 != nullptr &&
+            ising.arcs[i][j][k].node1->spin == ising.arcs[i][j][k].node2->spin &&
+            uniform() < (1 - exp(-scale * beta * ising.arcs[i][j][k].value / temperature)))
+          joins[i][j][k] = true;
+        else
+          joins[i][j][k] = false;
   return joins;
 }
 
-std::vector<Arc2*> SwendsenWang::removeFakeJoin(Ising2d ising, std::vector<Arc2*> cuts) {
-  std::vector<Arc2*> joins;
-  return joins;
+std::vector<std::vector<Node*>> SwendsenWang::generateClusters(Ising2d ising, std::vector<std::vector<std::vector<bool>>> joins) {
+  std::vector<std::vector<Node*>> clusters = std::vector<std::vector<Node*>>();
+  int clustersMap[ising.size][ising.size]  = {};
+  int lastCluster                          = 0;
+  for (int i = 0; i < ising.nodes.size(); i++)
+    for (int j = 0; j < ising.nodes[i].size(); j++) {
+      if (j == ising.nodes[i].size() - 1 && joins[i][0][LEFT]) {
+        clustersMap[i][j] = clustersMap[i][0];
+        clusters[clustersMap[i][0]].push_back(&ising.nodes[i][j]);
+      } else if (j > 0 && joins[i][j][LEFT]) {
+        clustersMap[i][j] = clustersMap[i][j - 1];
+        clusters[clustersMap[i][j - 1]].push_back(&ising.nodes[i][j]);
+      } else if (i == ising.nodes.size() - 1 && joins[0][j][UP]) {
+        clustersMap[i][j] = clustersMap[0][j];
+        clusters[clustersMap[0][j]].push_back(&ising.nodes[i][j]);
+      } else if (i > 0 && joins[i][j][UP]) {
+        clustersMap[i][j] = clustersMap[i - 1][j];
+        clusters[clustersMap[i - 1][j]].push_back(&ising.nodes[i][j]);
+      } else {
+        std::vector<Node*> newCluster = std::vector<Node*>();
+        newCluster.push_back(&ising.nodes[i][j]);
+        clusters.push_back(newCluster);
+        clustersMap[i][j] = lastCluster++;
+      }
+    }
+  return clusters;
 }
 
-std::vector<std::vector<Node*>> SwendsenWang::findClusters(Ising2d ising) {
-  std::vector<std::vector<Node*>> temp;
-  return temp;
+void SwendsenWang::randomFlip(std::vector<std::vector<Node*>> clusters) {
+  for (int i = 0; i < clusters.size(); i++)
+    if (uniform() < 0.5)
+      for (int j = 0; j < clusters[i].size(); j++)
+        clusters[i][j]->flip();
 }
-
-void SwendsenWang::randomFlip(std::vector<std::vector<Node*>> clusters) {}
 
 void SwendsenWang::run() {
   Ising2d currentConfig = startingConfig;
-  std::vector<Arc2*> joins;
+  std::vector<std::vector<std::vector<bool>>> joins;
   std::vector<std::vector<Node*>> clusters;
-  // cuts = getCuts(currentConfig);
   for (int i = 0; i < numberOfIterations; i++) {
-    // cuts += addCuts(currentConfig);
-    // clusters = findClusters(currentConfig);
-    // randomFlip(clusters)
-    // cuts = removeFakeCuts(currentConfig)
+    joins    = generateJoins(currentConfig);
+    clusters = generateClusters(currentConfig, joins);
+    randomFlip(clusters);
   }
+  endingConfig = currentConfig;
 }
-
-// std::vector<Cut> SwendsenWang::getCuts(Ising2d ising) {
-//   std::vector<Cut> cuts;
-//   for (int i = 0; i < ising.nodes.size(); i++) {
-//     for (int j = 0; j < ising.nodes[i].size(); j++) {
-//       if (i > 0 && ising.nodes[i][j].spin != ising.nodes[i - 1][j].spin) {
-//         cuts.emplace_back(i - 1, j, 0);
-//       }
-//     }
-//   }
-//   return cuts;
-// }
-
-// std::vector<Cut> SwendsenWang::addCuts(Ising2d ising) {
-//   std::vector<Cut> cuts;
-//   for (int i = 0; i < ising.nodes.size(); i++) {
-//     for (int j = 0; j < ising.nodes[i].size(); j++) {
-//       if (i > 0 && uniform() > 0.8) {
-//         cuts.emplace_back(i - 1, j, 0);
-//       }
-//     }
-//   }
-//   return cuts;
-// }
-
-// std::vector<Cut> SwendsenWang::removeFakeCuts(Ising2d ising,
-//                                               std::vector<Cut> cuts) {
-//   std::vector<Cut> temp;
-//   for (int i = 0; i < cuts.size(); i++) {
-//     if (ising.nodes[cuts[i].x][cuts[i].y].spin !=
-//         ising.nodes[cuts[i].x + 1][cuts[i].y].spin) {
-//       temp.emplace_back(cuts[i].x, cuts[i].y);
-//     }
-//   }
-//   return temp;
-// }
