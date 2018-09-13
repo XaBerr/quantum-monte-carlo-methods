@@ -1,7 +1,10 @@
 #include "Ising2dTransverse.h"
+#include "../lib/utility.h"
 #include <cmath>
 #include <limits>
 #include <algorithm>
+
+static Uniform uniform;
 
 Ising2dTransverse::Ising2dTransverse() {
   numberOfreplicas = 3;
@@ -34,6 +37,12 @@ double Ising2dTransverse::getIsingDiscreteEnergy() const {
 }
 
 double Ising2dTransverse::getIsingContinueEnergy() const {
+  double energy = 0;
+  if (slices.size() <= 0) return 0;
+  return slices[(int)((slices.size() - 1) * uniform())].getEnergy();
+}
+
+double Ising2dTransverse::getIsingAVGEnergy() const {
   double energy = 0;
   if (slices.size() <= 0) return 0;
   for (auto& slice : slices)

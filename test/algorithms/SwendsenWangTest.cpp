@@ -102,7 +102,7 @@ void printIsing(Ising2d ising) {
   printf("----------NODES---------\n");
   for (int i = 0; i < ising.nodes.size(); i++) {
     for (int j = 0; j < ising.nodes[i].size(); j++)
-      printf(" %d", ising.nodes[i][j].spin, ising.nodes[i][j].value);
+      printf(" %d [%f]", ising.nodes[i][j].spin, ising.nodes[i][j].value);
     printf("\n");
   }
 

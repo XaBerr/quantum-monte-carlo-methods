@@ -4,7 +4,7 @@
 #include <limits>
 #include <algorithm>
 
-Uniform uniform;
+static Uniform uniform;
 
 Ising2d::Ising2d() {
   size             = 3;

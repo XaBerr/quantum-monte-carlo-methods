@@ -74,3 +74,36 @@ TEST_CASE("Ising2dTransverse getDelta()", "[ising1,ising2]") {
   REQUIRE(ising1.getDelta(ising2) == 4);
   REQUIRE(ising2.getDelta(ising1) == -4);
 }
+
+TEST_CASE("Ising2dTransverse getIsingDiscreteEnergy()", "[ising]") {
+  Ising2dTransverse ising;
+  REQUIRE(ising.getEnergy() == 0);
+  ising.numberOfreplicas             = 3;
+  ising.periodicBoundary             = false;
+  ising.mainReplica.periodicBoundary = false;
+  ising.mainReplica.generate();
+  ising.generate();
+  REQUIRE(ising.slices[0].getEnergy() == ising.getIsingDiscreteEnergy());
+}
+
+TEST_CASE("Ising2dTransverse getIsingContinueEnergy()", "[ising]") {
+  Ising2dTransverse ising;
+  REQUIRE(ising.getEnergy() == 0);
+  ising.numberOfreplicas             = 3;
+  ising.periodicBoundary             = false;
+  ising.mainReplica.periodicBoundary = false;
+  ising.mainReplica.generate();
+  ising.generate();
+  REQUIRE(ising.slices[0].getEnergy() == ising.getIsingContinueEnergy());
+}
+
+TEST_CASE("Ising2dTransverse getIsingAVGEnergy()", "[ising]") {
+  Ising2dTransverse ising;
+  REQUIRE(ising.getEnergy() == 0);
+  ising.numberOfreplicas             = 3;
+  ising.periodicBoundary             = false;
+  ising.mainReplica.periodicBoundary = false;
+  ising.mainReplica.generate();
+  ising.generate();
+  REQUIRE(ising.slices[0].getEnergy() == ising.getIsingAVGEnergy());
+}

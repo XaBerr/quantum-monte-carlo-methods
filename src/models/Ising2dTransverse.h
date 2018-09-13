@@ -11,6 +11,7 @@ class Ising2dTransverse {
   double getEnergy() const;
   double getIsingDiscreteEnergy() const;
   double getIsingContinueEnergy() const;
+  double getIsingAVGEnergy() const;
   double getDelta(const Ising2dTransverse& ising) const;
   std::vector<Ising2d> slices;
   Ising2d mainReplica;
