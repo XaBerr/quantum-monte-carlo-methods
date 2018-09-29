@@ -14,11 +14,6 @@ RiegerKawashimaContinuous::RiegerKawashimaContinuous() {
   scale            = 10;
 }
 
-// std::vector<std::vector<std::vector<bool>>> RiegerKawashimaContinuous::generateJoins(Ising2d ising) {
-//   std::vector<std::vector<std::vector<bool>>> joins;
-//   return joins;
-// }
-
 std::vector<std::vector<std::vector<bool>>> RiegerKawashimaContinuous::generateCuts(Ising2dTransverse ising) {
   int beta        = ising.mainReplica.favorAlignment ? -1 : 1;
   double deltaTau = 1 / (temperature * ising.numberOfreplicas);
@@ -51,6 +46,35 @@ std::vector<std::vector<std::vector<bool>>> RiegerKawashimaContinuous::generateC
   return cuts;
 }
 
+std::vector<Segment> RiegerKawashimaContinuous::generateSegments(Ising2dTransverse ising, std::vector<std::vector<std::vector<bool>>> cuts) {
+  std::vector<Segment> segments;
+  int lastSegment = -1;
+  int loopSegment = 0;
+  int beta        = ising.mainReplica.favorAlignment ? -1 : 1;
+  double deltaTau = 1 / (temperature * ising.numberOfreplicas);
+  for (int i = 0; i < ising.mainReplica.nodes.size(); i++)
+    for (int j = 0; j < ising.mainReplica.nodes[i].size(); j++) {
+      for (int s = 0; s < ising.slices.size(); s++) {
+        if (!(s > 0 &&
+              ising.slices[s - 1].nodes[i][j].spin == ising.slices[s].nodes[i][j].spin &&
+              (uniform() < (1 - exp(ising.tranverseField * segments[lastSegment].size() * deltaTau))))) {
+          lastSegment++;
+          if (s == 0) loopSegment = lastSegment;
+          segments[lastSegment].spin = ising.slices[s].nodes[i][j].spin;
+        }
+        segments[lastSegment].points.push_back(Point(s, i, j));
+        // if (s == (ising.slices.size() - 1) &&
+        //     segments[loopSegment].value == segments[lastSegment].value &&
+        //     (uniform() < (1 - exp(ising.tranverseField * (segments[loopSegment].end.x - segments[loopSegment].begin.x + segments[lastSegment].end.x - segments[lastSegment].begin.x) * deltaTau)))) {
+        //   // join 2 segments
+        //   // remove last segment
+        // }
+      }
+    }
+
+  return segments;
+}
+
 std::vector<std::vector<Node *>> RiegerKawashimaContinuous::generateClusters(Ising2d &ising, std::vector<std::vector<std::vector<bool>>> cuts) {
   std::vector<std::vector<Node *>> clusters;
   double t, j = 0;
@@ -68,13 +92,13 @@ void RiegerKawashimaContinuous::randomFlip(std::vector<std::vector<Node *>> clus
 void RiegerKawashimaContinuous::run() {
   Ising2dTransverse currentConfig = startingConfig;
   std::vector<std::vector<std::vector<bool>>> cuts;
-  std::vector<std::vector<std::vector<bool>>> joins;
+  std::vector<Segment> segments;
   std::vector<std::vector<Node *>> clusters;
   for (double currentField = startingField; currentField > endingField; currentField -= deltaField) {
     cuts = generateCuts(currentConfig);
-    //   joins    = generateJoins(currentConfig);
-    //   clusters = generateClusters(currentConfig, joins);
-    //   randomFlip(clusters);
+    // segments = generateSegments(currentConfig, cuts);
+    // clusters = generateClusters(currentConfig, joins);
+    // randomFlip(clusters);
   }
   endingConfig = currentConfig;
 }

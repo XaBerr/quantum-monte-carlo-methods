@@ -2,12 +2,13 @@
 #define RiegerKawashimaContinuous_h
 
 #include "../models/Ising2dTransverse.h"
+#include "../models/Segment.h"
 
 class RiegerKawashimaContinuous {
  public:
   RiegerKawashimaContinuous();
-  // std::vector<std::vector<std::vector<bool>>> generateJoins(Ising2d ising);
   std::vector<std::vector<std::vector<bool>>> generateCuts(Ising2dTransverse ising);
+  std::vector<Segment> generateSegments(Ising2dTransverse ising, std::vector<std::vector<std::vector<bool>>> cuts);
   std::vector<std::vector<Node *>> generateClusters(Ising2d &ising, std::vector<std::vector<std::vector<bool>>> cuts);
   void randomFlip(std::vector<std::vector<Node *>> clusters);
   void run();

@@ -42,7 +42,8 @@
     "streambuf": "cpp",
     "system_error": "cpp",
     "type_traits": "cpp",
-    "typeinfo": "cpp"
+    "typeinfo": "cpp",
+    "string_view": "cpp"
   },
   "C_Cpp.loggingLevel": "Debug",
   "C_Cpp.errorSquiggles": "Disabled"
