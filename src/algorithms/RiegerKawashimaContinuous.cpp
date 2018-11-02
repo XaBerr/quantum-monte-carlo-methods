@@ -55,14 +55,14 @@ std::vector<Segment> RiegerKawashimaContinuous::generateSegments(Ising2dTransver
   for (int i = 0; i < ising.mainReplica.nodes.size(); i++)
     for (int j = 0; j < ising.mainReplica.nodes[i].size(); j++) {
       for (int s = 0; s < ising.slices.size(); s++) {
-        if (!(s > 0 &&
-              ising.slices[s - 1].nodes[i][j].spin == ising.slices[s].nodes[i][j].spin &&
-              (uniform() < (1 - exp(ising.tranverseField * segments[lastSegment].size() * deltaTau))))) {
-          lastSegment++;
-          if (s == 0) loopSegment = lastSegment;
-          segments[lastSegment].spin = ising.slices[s].nodes[i][j].spin;
-        }
-        segments[lastSegment].points.push_back(Point(s, i, j));
+        // if (!(s > 0 &&
+        //       ising.slices[s - 1].nodes[i][j].spin == ising.slices[s].nodes[i][j].spin &&
+        //       (uniform() < (1 - exp(ising.tranverseField * segments[lastSegment].size() * deltaTau))))) {
+        //   lastSegment++;
+        //   if (s == 0) loopSegment = lastSegment;
+        //   segments[lastSegment].spin = ising.slices[s].nodes[i][j].spin;
+        // }
+        // segments[lastSegment].points.push_back(Point(s, i, j));
         // if (s == (ising.slices.size() - 1) &&
         //     segments[loopSegment].value == segments[lastSegment].value &&
         //     (uniform() < (1 - exp(ising.tranverseField * (segments[loopSegment].end.x - segments[loopSegment].begin.x + segments[lastSegment].end.x - segments[lastSegment].begin.x) * deltaTau)))) {
