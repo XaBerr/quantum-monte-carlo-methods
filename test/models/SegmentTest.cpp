@@ -39,10 +39,12 @@ TEST_CASE("Segment size()", "[seg]") {
 }
 
 TEST_CASE("Segment intersect(segment)", "[seg1, seg2]") {
-  // Segment seg(Point(1, 2, 3), 1);
-  // REQUIRE(seg.spin == 1);
-  // REQUIRE(seg.size() == 1);
-  // REQUIRE(seg.subsegment[0].begin.x == 1);
-  // REQUIRE(seg.subsegment[0].begin.y == 2);
-  // REQUIRE(seg.subsegment[0].begin.z == 3);
+  Segment seg1, seg2;
+  seg1.add(Point(1, 2, 3), Point(2, 2, 3));
+  seg1.add(Point(4, 2, 3), Point(5, 2, 3));
+  REQUIRE(seg1.intersectionSize(seg2) == 0);
+  seg2.add(Point(1, 2, 3), Point(2, 2, 3));
+  REQUIRE(seg1.intersectionSize(seg2) == 1);
+  seg2.add(Point(4, 2, 3), Point(7, 2, 3));
+  REQUIRE(seg1.intersectionSize(seg2) == 2);
 }
