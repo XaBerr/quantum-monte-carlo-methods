@@ -8,11 +8,11 @@ class Segment {
   Segment() {
     spin = 0;
   }
-  Segment(Point _begin, Point _back, int _spin) {
+  Segment(int _begin, int _back, int _spin) {
     add(_begin, _back);
     spin = _spin;
   }
-  void add(Point _begin, Point _back) {
+  void add(int _begin, int _back) {
     subsegment.emplace_back(_begin, _back);
   }
   int size() {
