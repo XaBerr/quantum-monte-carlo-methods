@@ -27,9 +27,9 @@ int main(int argc, char const *argv[]) {
     sa.startingConfig.arcs[i].value = 1;
   }
 
-  printf("L'energia iniziale e' [%f]\n", sa.startingConfig.getEnergy());
+  printf("The starting energy is [%f]\n", sa.startingConfig.getEnergy());
   for (int i = 0; i < 10; i++) {
     sa.run();
-    printf("L'energia finale e' [%f]\n", sa.endingConfig.getEnergy());
+    printf("The ending energy is [%f]\n", sa.endingConfig.getEnergy());
   }
 }
