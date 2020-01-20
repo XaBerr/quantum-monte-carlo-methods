@@ -12,9 +12,10 @@ In this repository there are various implementations of the monte carlo algorith
 
 ## Simulated Annealing usage
 
-To make this library work you must include this file that you find in the src folder.
+To make this library work you must include this file.
 ```cpp
-#include "include.h"
+#include "quantum-monte-carlo-methods/src/include.h"
+using namespace QMCm;
 ```
 
 First you must generate your Ising model.
@@ -33,7 +34,7 @@ Initial nodes matrix of values
 1 1 1
 1 1 1
 */
-for (int i = 0; i < sa.startingConfig.nodes.size();; i++) {
+for (int i = 0; i < sa.startingConfig.nodes.size(); i++) {
   for (int j = 0; j < sa.startingConfig.nodes.size())
     ; j++) {
     sa.startingConfig.nodes[i][j].value = 1;
@@ -47,9 +48,10 @@ Initial arcs matrix of values
 1 1 1
 1 1 1
 */
-for (int i = 0; i < sa.startingConfig.arcs.size(); i++) {
-  sa.startingConfig.arcs[i].value = 1;
-}
+for (int i = 0; i < sa.startingConfig.arcs.size(); i++)
+    for (int j = 0; j < sa.startingConfig.arcs[i].size(); j++)
+      for (int k = 0; k < sa.startingConfig.arcs[i][k].size(); k++)
+        sa.startingConfig.arcs[i][j][k].value = 1;
 ```
 
 Last you run the algorithm few times.
@@ -64,9 +66,10 @@ for (int i = 0; i < 10; i++) {
 
 ## Swendsen Wang usage
 
-To make this library work you must include this file that you find in the src folder.
+To make this library work you must include this file.
 ```cpp
-#include "include.h"
+#include "quantum-monte-carlo-methods/src/include.h"
+using namespace QMCm;
 ```
 
 First you must generate your Ising model.
@@ -85,7 +88,7 @@ Initial nodes matrix of values
 1 1 1
 1 1 1
 */
-for (int i = 0; i < sw.startingConfig.nodes.size();; i++) {
+for (int i = 0; i < sw.startingConfig.nodes.size(); i++) {
   for (int j = 0; j < sw.startingConfig.nodes.size())
     ; j++) {
     sw.startingConfig.nodes[i][j].value = 1;
@@ -99,9 +102,10 @@ Initial arcs matrix of values
 1 1 1
 1 1 1
 */
-for (int i = 0; i < sw.startingConfig.arcs.size(); i++) {
-  sw.startingConfig.arcs[i].value = 1;
-}
+for (int i = 0; i < sw.startingConfig.arcs.size(); i++)
+    for (int j = 0; j < sw.startingConfig.arcs[i].size(); j++)
+      for (int k = 0; k < sw.startingConfig.arcs[i][k].size(); k++)
+        sw.startingConfig.arcs[i][j][k].value = 1;
 ```
 
 Last you run the algorithm few times.
@@ -116,9 +120,10 @@ for (int i = 0; i < 10; i++) {
 
 ## Santoro Tosatti Martonak usage
 
-To make this library work you must include this file that you find in the src folder.
+To make this library work you must include this file.
 ```cpp
-#include "include.h"
+#include "quantum-monte-carlo-methods/src/include.h"
+using namespace QMCm;
 ```
 
 First you must generate your Ising model that will be used to generate the transverse once.
@@ -210,3 +215,6 @@ tranverseField   = 1;
 // periodic boundary along the time direction
 periodicBoundary = false;
 ```
+
+## Example
+Also check out the example in `src/example.cpp`.

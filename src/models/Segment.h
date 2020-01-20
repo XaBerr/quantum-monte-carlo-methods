@@ -3,6 +3,7 @@
 
 #include "SubSegment.h"
 
+namespace QMCm {
 class Segment {
  public:
   Segment() {
@@ -34,4 +35,5 @@ class Segment {
   std::vector<SubSegment> subsegment;
   int spin;
 };
+};  // namespace QMCm
 #endif

@@ -2,7 +2,7 @@
 #define SantoroTosattiMartonak_h
 
 #include "../models/Ising2dTransverse.h"
-
+namespace QMCm {
 class SantoroTosattiMartonak {
  public:
   SantoroTosattiMartonak();
@@ -18,4 +18,5 @@ class SantoroTosattiMartonak {
   double deltaField;
   double scale;
 };
+};  // namespace QMCm
 #endif

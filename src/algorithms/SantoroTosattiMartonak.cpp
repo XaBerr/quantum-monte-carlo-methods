@@ -2,6 +2,7 @@
 #include "../lib/utility.h"
 #include <math.h>
 #include <stdio.h>
+using namespace QMCm;
 
 static Uniform uniform;
 

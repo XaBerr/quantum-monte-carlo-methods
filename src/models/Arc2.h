@@ -3,6 +3,7 @@
 
 #include "Node.h"
 
+namespace QMCm {
 class Arc2 {
  public:
   Arc2();
@@ -11,5 +12,6 @@ class Arc2 {
   Node* node2;
   double value;
 };
+};  // namespace QMCm
 
 #endif

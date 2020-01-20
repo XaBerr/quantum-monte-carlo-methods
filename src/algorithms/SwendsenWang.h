@@ -3,6 +3,7 @@
 
 #include "../models/Ising2d.h"
 
+namespace QMCm {
 class SwendsenWang {
  public:
   SwendsenWang();
@@ -17,4 +18,5 @@ class SwendsenWang {
   double scale;
   int numberOfIterations;
 };
+};  // namespace QMCm
 #endif

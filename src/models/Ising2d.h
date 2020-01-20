@@ -8,6 +8,7 @@
 #define LEFT 1
 #define DIM 2
 
+namespace QMCm {
 class Ising2d {
  public:
   Ising2d();
@@ -25,4 +26,5 @@ class Ising2d {
   double arcMaxValue;
   double arcMinValue;
 };
+};  // namespace QMCm
 #endif

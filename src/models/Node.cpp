@@ -1,4 +1,5 @@
 #include "Node.h"
+using namespace QMCm;
 
 Node::Node() {
   id    = "0-0";

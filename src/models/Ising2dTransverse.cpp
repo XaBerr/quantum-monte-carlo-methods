@@ -3,6 +3,7 @@
 #include <cmath>
 #include <limits>
 #include <algorithm>
+using namespace QMCm;
 
 static Uniform uniform;
 

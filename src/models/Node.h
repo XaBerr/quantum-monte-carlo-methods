@@ -3,6 +3,7 @@
 
 #include <string>
 
+namespace QMCm {
 class Node {
  public:
   Node();
@@ -13,4 +14,5 @@ class Node {
   int spin;
   double value;
 };
+};  // namespace QMCm
 #endif

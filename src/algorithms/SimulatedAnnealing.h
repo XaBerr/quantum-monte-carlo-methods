@@ -3,6 +3,7 @@
 
 #include "../models/Ising2d.h"
 
+namespace QMCm {
 class SimulatedAnnealing {
  public:
   SimulatedAnnealing();
@@ -16,4 +17,5 @@ class SimulatedAnnealing {
   double endingTemperature;
   double scale;
 };
+};  // namespace QMCm
 #endif

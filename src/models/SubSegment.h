@@ -3,6 +3,7 @@
 
 #include <vector>
 
+namespace QMCm {
 class SubSegment {
  public:
   SubSegment() {
@@ -43,4 +44,5 @@ class SubSegment {
   int begin;
   int end;
 };
+};  // namespace QMCm
 #endif

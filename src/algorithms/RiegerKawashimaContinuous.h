@@ -4,6 +4,7 @@
 #include "../models/Ising2dTransverse.h"
 #include "../models/Segment.h"
 
+namespace QMCm {
 class RiegerKawashimaContinuous {
  public:
   RiegerKawashimaContinuous();
@@ -22,4 +23,5 @@ class RiegerKawashimaContinuous {
   double deltaField;
   double scale;
 };
+};  // namespace QMCm
 #endif

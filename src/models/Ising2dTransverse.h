@@ -4,6 +4,7 @@
 #include <vector>
 #include "Ising2d.h"
 
+namespace QMCm {
 class Ising2dTransverse {
  public:
   Ising2dTransverse();
@@ -19,4 +20,5 @@ class Ising2dTransverse {
   double tranverseField;
   double periodicBoundary;
 };
+};  // namespace QMCm
 #endif

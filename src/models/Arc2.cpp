@@ -1,4 +1,5 @@
 #include "Arc2.h"
+using namespace QMCm;
 
 Arc2::Arc2() {
   node1 = nullptr;

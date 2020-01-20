@@ -6,7 +6,7 @@
     {
       "label": "build",
       "type": "shell",
-      "command": "./main.exe",
+      "command": "./example.out",
       "dependsOn": [
         "build-build"
       ],
@@ -18,7 +18,7 @@
     {
       "label": "build-build",
       "type": "shell",
-      "command": "g++ -std=c++14 -O0 src/main.cpp src/models/*.cpp src/algorithms/*.cpp -o main.exe",
+      "command": "g++ -std=c++14 -O0 src/example.cpp src/models/*.cpp src/algorithms/*.cpp -o example.out",
       "dependsOn": [
         "build-clear"
       ]
@@ -26,12 +26,12 @@
     {
       "label": "build-clear",
       "type": "shell",
-      "command": "rm main.exe -force"
+      "command": "rm example.out -force"
     },
     {
       "label": "test",
       "type": "shell",
-      "command": "./test.exe",
+      "command": "./test.out",
       "dependsOn": [
         "test-build"
       ],
@@ -51,7 +51,7 @@
     {
       "label": "test-debug",
       "type": "shell",
-      "command": "g++ -std=c++14 -g src/models/*.cpp src/algorithms/*.cpp test/models/*.cpp test/algorithms/*.cpp test/lib/*.cpp testmain.o -o test.exe",
+      "command": "g++ -std=c++14 -g src/models/*.cpp src/algorithms/*.cpp test/models/*.cpp test/algorithms/*.cpp test/lib/*.cpp testexample.o -o test.out",
       "dependsOn": [
         // "test-clear"
       ]
@@ -59,7 +59,7 @@
     {
       "label": "test-build",
       "type": "shell",
-      "command": "g++ -std=c++14 -O0 src/models/*.cpp src/algorithms/*.cpp test/models/*.cpp test/algorithms/*.cpp test/lib/*.cpp testmain.o -o test.exe",
+      "command": "g++ -std=c++14 -O0 src/models/*.cpp src/algorithms/*.cpp test/models/*.cpp test/algorithms/*.cpp test/lib/*.cpp testexample.o -o test.out",
       "dependsOn": [
         // "test-clear"
       ]
@@ -67,17 +67,17 @@
     {
       "label": "test-clear",
       "type": "shell",
-      "command": "rm test.exe -force"
+      "command": "rm test.out -force"
     },
     {
       "label": "test-build-catch",
       "type": "shell",
-      "command": "g++ -std=c++14 -O2 -c test/test.cpp -o testmain.o"
+      "command": "g++ -std=c++14 -O2 -c test/test.cpp -o testexample.o"
     },
     {
       "label": "test-build-nocatch",
       "type": "shell",
-      "command": "g++ -std=c++14 -O0 src/models/*.cpp src/algorithms/*.cpp test/models/*.cpp test/algorithms/*.cpp test/lib/*.cpp testmain.o -o test.exe"
+      "command": "g++ -std=c++14 -O0 src/models/*.cpp src/algorithms/*.cpp test/models/*.cpp test/algorithms/*.cpp test/lib/*.cpp testexample.o -o test.out"
     }
   ]
 }
