@@ -1,5 +1,6 @@
-#include "../../src/include.h"
-#include "../catch.hpp"
+#include <QMC-methods.h>
+#include <catch2/catch.hpp>
+using namespace QMCm;
 
 TEST_CASE("Arc2 Arc2()", "[arc]") {
   Arc2 arc;

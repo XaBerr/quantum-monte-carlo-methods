@@ -1,7 +1,5 @@
-#include "include.h"
-
+#include <QMC-methods.h>
 using namespace QMCm;
-
 static Uniform uniform;
 
 int main(int argc, char const *argv[]) {

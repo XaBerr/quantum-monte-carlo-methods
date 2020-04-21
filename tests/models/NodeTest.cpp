@@ -1,5 +1,6 @@
-#include "../../src/include.h"
-#include "../catch.hpp"
+#include <QMC-methods.h>
+#include <catch2/catch.hpp>
+using namespace QMCm;
 
 TEST_CASE("Node Node()", "[node]") {
   Node node;

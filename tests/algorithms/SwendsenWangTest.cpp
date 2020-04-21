@@ -1,6 +1,6 @@
-#include "../../src/include.h"
-#include "../catch.hpp"
-
+#include <QMC-methods.h>
+#include <catch2/catch.hpp>
+using namespace QMCm;
 static Uniform uniform;
 
 void printJoins(std::vector<std::vector<std::vector<bool>>> joins);
