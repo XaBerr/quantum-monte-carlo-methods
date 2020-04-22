@@ -9,9 +9,9 @@
     <br>
     <img src="https://img.shields.io/static/v1?label=cpp&message=11&color=007bff">
     <img src="https://img.shields.io/static/v1?label=cmake&message=3.14&color=007bff">
-    <img src="https://img.shields.io/static/v1?label=SO&message=Win&color=28a745">
-    <img src="https://img.shields.io/static/v1?label=SO&message=Mac&color=28a745">
-    <img src="https://img.shields.io/static/v1?label=SO&message=Linux&color=28a745">
+    <img src="https://img.shields.io/static/v1?label=OS&message=Win&color=28a745">
+    <img src="https://img.shields.io/static/v1?label=OS&message=Mac&color=28a745">
+    <img src="https://img.shields.io/static/v1?label=OS&message=Linux&color=28a745">
   </p>
 </p>
 <br>
