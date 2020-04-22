@@ -1,5 +1,5 @@
 <p align="center">
-    <img src="https://user-images.githubusercontent.com/16030020/79965872-e164f800-848c-11ea-8dcb-e526b2eeaadb.png" alt="logo" width=72 height=72>
+    <img src="https://user-images.githubusercontent.com/16030020/79965872-e164f800-848c-11ea-8dcb-e526b2eeaadb.png" alt="logo" width=150 height=150>
   <h3 align="center">QMC-methods</h3>
   <p align="center">
     In this repository there are various implementations of the Monte Carlo algorithm for the calculation of the minimum in an Ising model.
