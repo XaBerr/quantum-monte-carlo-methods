@@ -1,7 +1,9 @@
 #ifndef SantoroTosattiMartonak_h
 #define SantoroTosattiMartonak_h
 
-#include "../models/Ising2dTransverse.h"
+#include "../../src/models/Ising2dTransverse.h"
+#include "../../src/libs/Uniform.h"
+
 namespace QMCm {
 class SantoroTosattiMartonak {
  public:

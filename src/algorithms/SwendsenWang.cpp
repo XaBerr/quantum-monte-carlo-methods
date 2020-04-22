@@ -1,9 +1,7 @@
-#include "SwendsenWang.h"
-#include "../lib/utility.h"
+#include "../../include/QMC-methods/SwendsenWang.h"
 #include <math.h>
 #include <stdio.h>
 using namespace QMCm;
-
 static Uniform uniform;
 
 SwendsenWang::SwendsenWang() {

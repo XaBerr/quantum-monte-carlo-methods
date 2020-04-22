@@ -1,8 +1,9 @@
 #ifndef RiegerKawashimaContinuous_h
 #define RiegerKawashimaContinuous_h
 
-#include "../models/Ising2dTransverse.h"
-#include "../models/Segment.h"
+#include "../../src/models/Ising2dTransverse.h"
+#include "../../src/models/Segment.h"
+#include "../../src/libs/Uniform.h"
 
 namespace QMCm {
 class RiegerKawashimaContinuous {

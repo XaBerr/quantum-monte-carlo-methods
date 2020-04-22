@@ -1,5 +1,5 @@
-#ifndef utility_h
-#define utility_h
+#ifndef Uniform_h
+#define Uniform_h
 
 #include <random>
 #include <ctime>

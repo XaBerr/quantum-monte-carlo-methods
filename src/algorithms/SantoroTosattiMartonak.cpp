@@ -1,9 +1,7 @@
-#include "SantoroTosattiMartonak.h"
-#include "../lib/utility.h"
+#include "../../include/QMC-methods/SantoroTosattiMartonak.h"
 #include <math.h>
 #include <stdio.h>
 using namespace QMCm;
-
 static Uniform uniform;
 
 SantoroTosattiMartonak::SantoroTosattiMartonak() {

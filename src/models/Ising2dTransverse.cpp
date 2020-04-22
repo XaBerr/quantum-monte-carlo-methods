@@ -1,5 +1,5 @@
 #include "Ising2dTransverse.h"
-#include "../lib/utility.h"
+#include "../../include/QMC-methods/Uniform.h"
 #include <cmath>
 #include <limits>
 #include <algorithm>

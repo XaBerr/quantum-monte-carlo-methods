@@ -1,7 +1,8 @@
 #ifndef SwendsenWang_h
 #define SwendsenWang_h
 
-#include "../models/Ising2d.h"
+#include "../../src/models/Ising2d.h"
+#include "../../src/libs/Uniform.h"
 
 namespace QMCm {
 class SwendsenWang {

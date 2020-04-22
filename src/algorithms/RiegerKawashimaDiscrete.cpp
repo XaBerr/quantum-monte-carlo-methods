@@ -1,1 +1,1 @@
-#include "RiegerKawashimaDiscrete.h"
+#include "../../include/QMC-methods/RiegerKawashimaDiscrete.h"

@@ -1,9 +1,7 @@
-#include "SimulatedAnnealing.h"
-#include "../lib/utility.h"
+#include "../../include/QMC-methods/SimulatedAnnealing.h"
 #include <math.h>
 #include <stdio.h>
 using namespace QMCm;
-
 static Uniform uniform;
 
 SimulatedAnnealing::SimulatedAnnealing() {

@@ -5,7 +5,7 @@ FetchContent_Declare(
   GIT_TAG        v2.9.1
 )
 FetchContent_MakeAvailable(catch2)
-file(GLOB autopilot_sources "algorithms/**.cpp" "lib/**.cpp" "models/**.cpp")
+file(GLOB autopilot_sources "algorithms/**.cpp" "libs/**.cpp" "models/**.cpp")
 SET(autopilot ${autopilot_sources})
 add_executable(
   "${PROJECT_NAME}Test"
