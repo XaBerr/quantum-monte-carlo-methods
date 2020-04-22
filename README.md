@@ -1,6 +1,62 @@
-# Quantum Monte Carlo methods
+<p align="center">
+    <img src="https://user-images.githubusercontent.com/16030020/79965872-e164f800-848c-11ea-8dcb-e526b2eeaadb.png" alt="logo" width=72 height=72>
+  <h3 align="center">QMC-methods</h3>
+  <p align="center">
+    In this repository there are various implementations of the Monte Carlo algorithm for the calculation of the minimum in an Ising model.
+    <br>
+    <strong>- Requirements -</strong>
+    <br>
+    <br>
+    <img src="https://img.shields.io/static/v1?label=cpp&message=11&color=007bff">
+    <img src="https://img.shields.io/static/v1?label=cmake&message=3.14&color=007bff">
+    <img src="https://img.shields.io/static/v1?label=SO&message=Win&color=28a745">
+    <img src="https://img.shields.io/static/v1?label=SO&message=Mac&color=28a745">
+    <img src="https://img.shields.io/static/v1?label=SO&message=Linux&color=28a745">
+  </p>
+</p>
+<br>
 
-In this repository there are various implementations of the monte carlo algorithm for the calculation of the minimum in an ising model. In particular these are the algorithms implemented until now:
+## Installation
+- **Manual**
+
+  Download this repository:
+  ```sh
+  git clone git@github.com:XaBerr/quantum-monte-carlo-methods.git
+  ```
+  and compile it running:
+  ```sh
+  rm build/ -rf;cmake -S . -B build;make -C build;
+  ```
+
+- **CMake module**
+
+  Module data:
+  ```java
+  FetchContent_Declare(
+    "QMC-methods"
+    GIT_REPOSITORY https://github.com/XaBerr/quantum-monte-carlo-methods.git
+    GIT_TAG        1.0.0
+  )
+  ```
+
+## Inclusion
+All include file are avaiable in the `include` directory.
+You can include each library individually:
+```cpp
+#include <QMC-methods/SimulatedAnnealing.h>
+#include <QMC-methods/SantoroTosattiMartonak.h>
+#include <QMC-methods/SwendsenWang.h>
+using namespace LGBm;
+```
+or using the single include:
+```cpp
+#include <QMC-methods.h>
+using namespace LGBm;
+```
+
+## Usage
+
+These are the algorithms implemented until now:
 
 - [x] Simulated Annealing
 - [x] SwendsenWang
@@ -8,15 +64,7 @@ In this repository there are various implementations of the monte carlo algorith
 - [ ] RiegerKawashimaDiscrete
 - [ ] RiegerKawashimaContinuous
 
-# Documentation
-
-## Simulated Annealing usage
-
-To make this library work you must include this file.
-```cpp
-#include "quantum-monte-carlo-methods/src/include.h"
-using namespace QMCm;
-```
+#### Simulated Annealing
 
 First you must generate your Ising model.
 ```cpp
@@ -64,13 +112,7 @@ for (int i = 0; i < 10; i++) {
 }
 ```
 
-## Swendsen Wang usage
-
-To make this library work you must include this file.
-```cpp
-#include "quantum-monte-carlo-methods/src/include.h"
-using namespace QMCm;
-```
+#### Swendsen Wang
 
 First you must generate your Ising model.
 ```cpp
@@ -118,13 +160,7 @@ for (int i = 0; i < 10; i++) {
 }
 ```
 
-## Santoro Tosatti Martonak usage
-
-To make this library work you must include this file.
-```cpp
-#include "quantum-monte-carlo-methods/src/include.h"
-using namespace QMCm;
-```
+#### Santoro Tosatti Martonak
 
 First you must generate your Ising model that will be used to generate the transverse once.
 ```cpp
@@ -217,4 +253,4 @@ periodicBoundary = false;
 ```
 
 ## Example
-Also check out the example in `src/example.cpp`.
+Also check out the example in `apps/example.cpp`.
