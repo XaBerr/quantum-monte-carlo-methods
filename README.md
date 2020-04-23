@@ -41,17 +41,20 @@
 
 ## Inclusion
 All include file are avaiable in the `include` directory.
+You can also define the random distribution `Uniform`.
 You can include each library individually:
 ```cpp
 #include <QMC-methods/SimulatedAnnealing.h>
 #include <QMC-methods/SantoroTosattiMartonak.h>
 #include <QMC-methods/SwendsenWang.h>
 using namespace QMCm;
+static Uniform uniform;
 ```
 or using the single include:
 ```cpp
 #include <QMC-methods.h>
 using namespace QMCm;
+static Uniform uniform;
 ```
 
 ## Usage
@@ -83,8 +86,7 @@ Initial nodes matrix of values
 1 1 1
 */
 for (int i = 0; i < sa.startingConfig.nodes.size(); i++) {
-  for (int j = 0; j < sa.startingConfig.nodes.size())
-    ; j++) {
+  for (int j = 0; j < sa.startingConfig.nodes.size(); j++) {
     sa.startingConfig.nodes[i][j].value = 1;
     sa.startingConfig.nodes[i][j].spin = (uniform() < 0.5) ? 1 : -1;
   }
@@ -131,8 +133,7 @@ Initial nodes matrix of values
 1 1 1
 */
 for (int i = 0; i < sw.startingConfig.nodes.size(); i++) {
-  for (int j = 0; j < sw.startingConfig.nodes.size())
-    ; j++) {
+  for (int j = 0; j < sw.startingConfig.nodes.size(); j++) {
     sw.startingConfig.nodes[i][j].value = 1;
     sw.startingConfig.nodes[i][j].spin = (uniform() < 0.5) ? 1 : -1;
   }
