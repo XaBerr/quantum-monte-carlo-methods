@@ -1,5 +1,5 @@
 #include "Ising2d.h"
-#include "../../include/QMC-methods/Uniform.h"
+#include "../libs/Uniform.h"
 #include <cmath>
 #include <limits>
 #include <algorithm>
