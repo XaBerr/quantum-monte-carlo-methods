@@ -46,12 +46,12 @@ You can include each library individually:
 #include <QMC-methods/SimulatedAnnealing.h>
 #include <QMC-methods/SantoroTosattiMartonak.h>
 #include <QMC-methods/SwendsenWang.h>
-using namespace LGBm;
+using namespace QMCm;
 ```
 or using the single include:
 ```cpp
 #include <QMC-methods.h>
-using namespace LGBm;
+using namespace QMCm;
 ```
 
 ## Usage
