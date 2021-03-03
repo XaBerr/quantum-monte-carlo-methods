@@ -67,7 +67,7 @@ These are the algorithms implemented until now:
 - [ ] [RiegerKawashimaDiscrete](https://science.sciencemag.org/content/348/6231/215)
 - [ ] [RiegerKawashimaContinuous](https://arxiv.org/abs/cond-mat/9802104)
 
-#### Simulated Annealing
+### Simulated Annealing
 
 First you must generate your Ising model.
 ```cpp
@@ -114,7 +114,7 @@ for (int i = 0; i < 10; i++) {
 }
 ```
 
-#### Swendsen Wang
+### Swendsen Wang
 
 First you must generate your Ising model.
 ```cpp
@@ -161,7 +161,7 @@ for (int i = 0; i < 10; i++) {
 }
 ```
 
-#### Santoro Tosatti Martonak
+### Santoro Tosatti Martonak
 
 First you must generate your Ising model that will be used to generate the transverse once.
 ```cpp
